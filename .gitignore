@@ -34,3 +34,7 @@ node_modules/
 npm-debug.log
 
 *.swp
+
+*.swp
+
+.index.ios.js.swp
