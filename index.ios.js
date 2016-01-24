@@ -28,6 +28,11 @@ var Child = Tcomb.struct({
 	city: Tcomb.String,
 	state: Tcomb.String,
 	zipCode: ZipCode,
+	homePhoneNumber: Tcomb.String,
+	cellPhoneNumber: Tcomb.maybe(Tcomb.String),
+	homeEmailAddress: Tcomb.maybe(Tcomb.String),
+	childAge: Tcomb.Number,
+
 	//zipCode: Tcomb.Number,
 	//homePhone: Tcomb.String,
 
@@ -65,10 +70,20 @@ var Options = {
 			//error: "Zip code is required",
 			placeholder: "Zip code"
 		},
-		/*homePhone; {
-			error: "A valid home phone number is required",
-			placeholder: "Home Phone"
-		}*/
+		homePhoneNumber: {
+			error: "A home phone number is required",
+			placeholder: "Home Phone Number"
+		},
+		cellPhoneNumber: {
+			//error: "A cell number is required",
+			placeholder: "Cell Phone Number"
+		},
+		homeEmailAddress: {
+			placeholder: "Home Email Address"
+		},
+		childAge: {
+			error: "Child's age is required"
+		}
 	}
 };
 
