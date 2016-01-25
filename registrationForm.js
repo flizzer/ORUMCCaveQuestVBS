@@ -15,13 +15,30 @@ var Form = Tcomb.form.Form;
 var Gender = Tcomb.enums({
 		M: 'Male',
 		F: 'Female'
-	});
+});
 var ZipCode = Tcomb.refinement(Tcomb.Number,
   function(n) {
     return (n > 0 && n.toString().length == 5);
- });
+  }
+);
 ZipCode.getValidationErrorMessage = function(value,path,context) {
 	return 'A zip code is required';
+};
+var ChildAge = Tcomb.refinement(Tcomb.Number,
+  function(n) {
+    return (n >= 3);
+  }
+);
+ChildAge.getValidationErrorMessage = function(value,path,context) {
+  return 'Child must be 3 years of age or older';
+};
+var ChildSchoolGrade = Tcomb.refinement(Tcomb.Number,
+  function(n) {
+      return (n <= 10);
+  }
+);
+ChildSchoolGrade.getValidationErrorMessage = function(value,path,context) {
+    return "Child's grade for 2016-2017 school year must be 10th or less"
 };
 var Child = Tcomb.struct({
 	childFirstName: Tcomb.String,
@@ -34,7 +51,12 @@ var Child = Tcomb.struct({
 	homePhoneNumber: Tcomb.String,
 	cellPhoneNumber: Tcomb.maybe(Tcomb.String),
 	homeEmailAddress: Tcomb.maybe(Tcomb.String),
-	childAge: Tcomb.Number,
+	childAge: ChildAge,
+  childDOB: Tcomb.Date,
+  childSchoolGrade: ChildSchoolGrade,
+  childSchoolName: Tcomb.maybe(Tcomb.String),
+  childMotherName: Tcomb.maybe(Tcomb.String), //need to validate this or father --bhd
+  childFatherName: Tcomb.maybe(Tcomb.String), //need to validate this or mother --bhd
 
 
 	orderCD: Tcomb.Boolean
@@ -68,7 +90,6 @@ var Options = {
 			placeholder: "State"
 		},
 		zipCode: {
-			//error: "Zip code is required",
 			placeholder: "Zip code"
 		},
 		homePhoneNumber: {
@@ -76,7 +97,6 @@ var Options = {
 			placeholder: "Home Phone Number"
 		},
 		cellPhoneNumber: {
-			//error: "A cell number is required",
 			placeholder: "Cell Phone Number"
 		},
 		homeEmailAddress: {
@@ -84,7 +104,22 @@ var Options = {
 		},
 		childAge: {
 			error: "Child's age is required"
-		}
+		},
+		childDOB: {
+      mode: "date"
+		},
+    childSchoolGrade: {
+      placeholder: "Child's 2016-2017 School Grade"
+    },
+    childSchoolName: {
+      placeholder: "Child's School Name"
+    },
+    childMotherName: {
+      placeholder: "Child's Mother's Name"
+    },
+    childFatherName: {
+      placeholder: "Child's Father's Name"
+    },
 	}
 };
 
