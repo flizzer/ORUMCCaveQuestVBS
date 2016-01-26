@@ -57,7 +57,8 @@ var Child = Tcomb.struct({
   childSchoolName: Tcomb.maybe(Tcomb.String),
   childMotherName: Tcomb.String,
   childFatherName: Tcomb.String,
-  childOtherGuardian: Tcomb.maybe(Tcomb.String),
+  childOtherGuardianRelationship: Tcomb.maybe(Tcomb.String),
+  childOtherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
 
 
 	orderCD: Tcomb.Boolean
@@ -101,7 +102,8 @@ var Options = {
 			placeholder: "Cell Phone Number"
 		},
 		homeEmailAddress: {
-			placeholder: "Home Email Address"
+			placeholder: "Home Email Address",
+      help: "Enter either a cell phone number or email address for updates regarding VBS week."
 		},
 		childAge: {
 			error: "Child's age is required",
@@ -125,9 +127,12 @@ var Options = {
 			error: "Child's father's name is required",
       placeholder: "Child's Father's Name"
     },
-    childOtherGuardian: {
-      placeholder: "Other Guardian Allowed To Pickup (optional)"
-
+    childOtherGuardianRelationship: {
+      placeholder: "Guardian Relationship (optional)"
+    },
+    childOtherGuardianPhoneNumber: {
+      placeholder: "Guardian Phone Number (optional)",
+      help: "Enter other guardian relationship and phone number"
     }
 	}
 };
