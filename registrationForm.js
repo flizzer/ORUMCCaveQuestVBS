@@ -4,12 +4,13 @@
 
 var React = require('react-native');
 var Tcomb = require('tcomb-form-native');
-
+var _ = require('lodash');
 var {
+  ScrollView,
   StyleSheet,
   Text,
-  ScrollView,
-  TouchableHighlight
+  TouchableHighlight,
+  View
 } = React;
 var Form = Tcomb.form.Form;
 var Gender = Tcomb.enums({
@@ -63,51 +64,126 @@ var Child = Tcomb.struct({
 
 	orderCD: Tcomb.Boolean
 });
+
+function customFormTemplate(locals)
+{
+    var customFormStyles = StyleSheet.create({
+      horizontalInputContainer:{
+        flexDirection: 'row'
+      },
+      flexInput:{
+        flex:1,
+        padding: 2
+      },
+      helpText:{
+        color: '#999999',
+        fontSize: 17,
+        marginBottom: 2
+      },
+      border:{
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#cccccc',
+        marginBottom: 5,
+        padding: 7
+      }
+    });
+    return (
+        <View>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+                {locals.inputs.childFirstName}
+            </View>
+            <View style={customFormStyles.flexInput}>
+                {locals.inputs.childLastName}
+            </View>
+          </View>
+          {locals.inputs.childGender}
+          <View style={customFormStyles.border}>
+            {locals.inputs.streetAddress}
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.city}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.state}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.zipCode}
+              </View>
+            </View>
+            <View>
+              {locals.inputs.homePhoneNumber}
+            </View>
+            <Text style={customFormStyles.helpText}>
+              Enter some basic contact information.
+            </Text>
+          </View>
+          <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+                <View style={customFormStyles.flexInput}>
+                  {locals.inputs.cellPhoneNumber}
+                </View>
+                <View style={customFormStyles.flexInput}>
+                  {locals.inputs.homeEmailAddress}
+                </View>
+            </View>
+            <Text style={customFormStyles.helpText}>
+              Enter either a cell phone number OR email address for updates regarding VBS week.
+            </Text>
+          </View>
+          <View>
+          </View>
+
+        </View>
+    );
+}
+
 var Options = {
+  template: customFormTemplate,
 	auto: 'placeholders',
 	fields: {
 		childFirstName: {
 			error: "Child's first name is required",
-			placeholder: "Child's First Name",
+			placeholder: "Child's First Name*"
 		},
 		childLastName: {
 			error: "Child's last name is required",
-			placeholder: "Child's Last Name",
+			placeholder: "Child's Last Name*"
 		},
 		childGender: {
 			error: "Child's gender is required",
 			order: 'asc',
-			nullOption: {value: '', text: "Child's Gender"}
+			nullOption: {value: '', text: "Child's Gender*"}
 		},
 		streetAddress: {
 			error: "Street address is required",
-			placholder: "Street Address"
+			placeholder: "Street Address*"
 		},
 		city: {
 			error: "City is required",
-			placeholder: "City"
+			placeholder: "City*"
 		},
 		state: {
-			error: "State is required",
-			placeholder: "State"
+			error: "State is required*",
+			placeholder: "State*"
 		},
 		zipCode: {
-			placeholder: "Zip code"
+			placeholder: "Zip code*"
 		},
 		homePhoneNumber: {
 			error: "A home phone number is required",
-			placeholder: "Home Phone Number"
+			placeholder: "Home Phone Number*"
 		},
 		cellPhoneNumber: {
 			placeholder: "Cell Phone Number"
 		},
 		homeEmailAddress: {
 			placeholder: "Home Email Address",
-      help: "Enter either a cell phone number or email address for updates regarding VBS week."
 		},
 		childAge: {
 			error: "Child's age is required",
-      placeholder: "Child's Age"
+      placeholder: "Child's Age*"
 		},
 		childDOB: {
       mode: "date"
@@ -117,21 +193,21 @@ var Options = {
     },
     childSchoolName: {
 			error: "Child's school name is required",
-      placeholder: "Child's School Name"
+      placeholder: "Child's School Name*"
     },
     childMotherName: {
 			error: "Child's mother's name is required",
-      placeholder: "Child's Mother's Name"
+      placeholder: "Child's Mother's Name*"
     },
     childFatherName: {
 			error: "Child's father's name is required",
-      placeholder: "Child's Father's Name"
+      placeholder: "Child's Father's Name*"
     },
     childOtherGuardianRelationship: {
-      placeholder: "Guardian Relationship (optional)"
+      placeholder: "Guardian Relationship"
     },
     childOtherGuardianPhoneNumber: {
-      placeholder: "Guardian Phone Number (optional)",
+      placeholder: "Guardian Phone Number",
       help: "Enter other guardian relationship and phone number"
     }
 	}
@@ -146,24 +222,24 @@ var RegistrationForm = React.createClass({
 	},
 	render: function() {
 	  	return (
-			<ScrollView contentContainerStyle={styles.container}>
+			<ScrollView contentContainerStyle={registrationFormStyles.container}>
 				<Form
 					ref="form"
 					type={Child}
 					options={Options}
 				/>
 				<TouchableHighlight
-					style={styles.button}
+					style={registrationFormStyles.button}
 					onPress={this.onPress}
 					underlayColor='#99d9f4'>
-						<Text style={styles.buttonText}>Save</Text>
+						<Text style={registrationFormStyles.buttonText}>Register</Text>
 				</TouchableHighlight>
 			</ScrollView>
 		);
 	}
 });
 
-var styles = StyleSheet.create({
+var registrationFormStyles = StyleSheet.create({
   button: {
     height: 36,
     backgroundColor: '#48BBEC',
@@ -184,9 +260,6 @@ var styles = StyleSheet.create({
     marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff'
-	//flex:1,
-	//flexDirection:'row',
-	//alignItems:'center'
   }
 });
 
