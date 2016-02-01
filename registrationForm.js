@@ -58,6 +58,7 @@ var Child = Tcomb.struct({
   childSchoolName: Tcomb.maybe(Tcomb.String),
   childMotherName: Tcomb.String,
   childFatherName: Tcomb.String,
+  childOtherGuardianName: Tcomb.maybe(Tcomb.String),
   childOtherGuardianRelationship: Tcomb.maybe(Tcomb.String),
   childOtherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
 
@@ -86,20 +87,25 @@ function customFormTemplate(locals)
         borderColor: '#cccccc',
         marginBottom: 5,
         padding: 7
+      },
+      label:{
+        color: '#000000',
+        fontWeight: '500',
+        fontSize: 17
       }
     });
     return (
         <View>
-          <View style={customFormStyles.horizontalInputContainer}>
-            <View style={customFormStyles.flexInput}>
-                {locals.inputs.childFirstName}
-            </View>
-            <View style={customFormStyles.flexInput}>
-                {locals.inputs.childLastName}
-            </View>
-          </View>
-          {locals.inputs.childGender}
           <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                  {locals.inputs.childFirstName}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                  {locals.inputs.childLastName}
+              </View>
+            </View>
+            {locals.inputs.childGender}
             {locals.inputs.streetAddress}
             <View style={customFormStyles.horizontalInputContainer}>
               <View style={customFormStyles.flexInput}>
@@ -114,9 +120,32 @@ function customFormTemplate(locals)
             </View>
             <View>
               {locals.inputs.homePhoneNumber}
+              {locals.inputs.childAge}
+              <Text style={customFormStyles.label}>
+                Child's Date of Birth:*
+              </Text>
+              {locals.inputs.childDOB}
+              {locals.inputs.childSchoolGrade}
+              {locals.inputs.childSchoolName}
             </View>
             <Text style={customFormStyles.helpText}>
-              Enter some basic contact information.
+              Please enter some basic contact information.
+            </Text>
+          </View>
+          <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.childMotherName}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.childFatherName}
+              </View>
+            </View>
+            {locals.inputs.childOtherGuardianName}
+            {locals.inputs.childOtherGuardianRelationship}
+            {locals.inputs.childOtherGuardianPhoneNumber}
+            <Text style={customFormStyles.helpText}>
+              Please enter parental/guardian information as appropriate.  Must have at least one.
             </Text>
           </View>
           <View style={customFormStyles.border}>
@@ -129,10 +158,11 @@ function customFormTemplate(locals)
                 </View>
             </View>
             <Text style={customFormStyles.helpText}>
-              Enter either a cell phone number OR email address for updates regarding VBS week.
+              Please enter either a cell phone number OR an email address for updates regarding VBS week.
             </Text>
           </View>
-          <View>
+          <View style={customFormStyles.border}>
+            
           </View>
 
         </View>
@@ -186,7 +216,8 @@ var Options = {
       placeholder: "Child's Age*"
 		},
 		childDOB: {
-      mode: "date"
+      mode: "date",
+      placeholder: "Child's Date of Birth*"
 		},
     childSchoolGrade: {
       placeholder: "Child's 2016-2017 School Grade"
@@ -196,19 +227,21 @@ var Options = {
       placeholder: "Child's School Name*"
     },
     childMotherName: {
-			error: "Child's mother's name is required",
-      placeholder: "Child's Mother's Name*"
+			// error: "Child's mother's name is required",
+      placeholder: "Child's Mother's Name"
     },
     childFatherName: {
-			error: "Child's father's name is required",
-      placeholder: "Child's Father's Name*"
+			// error: "Child's father's name is required",
+      placeholder: "Child's Father's Name"
+    },
+    childOtherGuardianName: {
+      placeholder: "Guardian Name"
     },
     childOtherGuardianRelationship: {
       placeholder: "Guardian Relationship"
     },
     childOtherGuardianPhoneNumber: {
       placeholder: "Guardian Phone Number",
-      help: "Enter other guardian relationship and phone number"
     }
 	}
 };
