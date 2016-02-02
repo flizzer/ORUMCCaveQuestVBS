@@ -25,26 +25,31 @@ var ZipCode = Tcomb.refinement(Tcomb.Number,
 ZipCode.getValidationErrorMessage = function(value,path,context) {
 	return 'A zip code is required';
 };
-var ChildAge = Tcomb.refinement(Tcomb.Number,
+var Age = Tcomb.refinement(Tcomb.Number,
   function(n) {
     return (n >= 3);
   }
 );
-ChildAge.getValidationErrorMessage = function(value,path,context) {
+Age.getValidationErrorMessage = function(value,path,context) {
   return 'Child must be 3 years of age or older';
 };
-var ChildSchoolGrade = Tcomb.refinement(Tcomb.Number,
+var SchoolGrade = Tcomb.refinement(Tcomb.Number,
   function(n) {
       return (n <= 10);
   }
 );
-ChildSchoolGrade.getValidationErrorMessage = function(value,path,context) {
+SchoolGrade.getValidationErrorMessage = function(value,path,context) {
     return "Child's grade for 2016-2017 school year must be 10th or less"
 };
+var VolunteerAgeGroup = Tcomb.enums({
+    E: 'Elementary',
+    P: 'Preschool',
+    O: 'Other'
+});
 var Child = Tcomb.struct({
-	childFirstName: Tcomb.String,
-	childLastName: Tcomb.String,
-	childGender: Gender,
+	firstName: Tcomb.String,
+	lastName: Tcomb.String,
+	gender: Gender,
 	streetAddress: Tcomb.String,
 	city: Tcomb.String,
 	state: Tcomb.String,
@@ -52,15 +57,22 @@ var Child = Tcomb.struct({
 	homePhoneNumber: Tcomb.String,
 	cellPhoneNumber: Tcomb.maybe(Tcomb.String),
 	homeEmailAddress: Tcomb.maybe(Tcomb.String),
-	childAge: ChildAge,
-  childDOB: Tcomb.Date,
-  childSchoolGrade: ChildSchoolGrade,
-  childSchoolName: Tcomb.maybe(Tcomb.String),
-  childMotherName: Tcomb.String,
-  childFatherName: Tcomb.String,
-  childOtherGuardianName: Tcomb.maybe(Tcomb.String),
-  childOtherGuardianRelationship: Tcomb.maybe(Tcomb.String),
-  childOtherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
+	age: Age,
+  DOB: Tcomb.Date,
+  schoolGrade: SchoolGrade,
+  schoolName: Tcomb.maybe(Tcomb.String),
+  motherName: Tcomb.String,
+  fatherName: Tcomb.String,
+  otherGuardianName: Tcomb.maybe(Tcomb.String),
+  otherGuardianRelationship: Tcomb.maybe(Tcomb.String),
+  otherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
+  emergencyName: Tcomb.String,
+  emergencyPhoneNumber: Tcomb.String,
+  allergies: Tcomb.maybe(Tcomb.String),
+  homeChurch: Tcomb.maybe(Tcomb.String),
+  friendRequest: Tcomb.maybe(Tcomb.String),
+  isVolunteer: Tcomb.Boolean,
+  volunteerAgeGroup: VolunteerAgeGroup,
 
 
 	orderCD: Tcomb.Boolean
@@ -70,11 +82,20 @@ function customFormTemplate(locals)
 {
     var customFormStyles = StyleSheet.create({
       horizontalInputContainer:{
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
       },
       flexInput:{
         flex:1,
-        padding: 2
+        padding: 2,
+        flexWrap: 'nowrap'
+      },
+      flexInputNoLabelWrap:{
+        flex:2,
+        padding: 2,
+        alignItems: 'center',
+        justifyContent: 'center'
       },
       helpText:{
         color: '#999999',
@@ -99,13 +120,13 @@ function customFormTemplate(locals)
           <View style={customFormStyles.border}>
             <View style={customFormStyles.horizontalInputContainer}>
               <View style={customFormStyles.flexInput}>
-                  {locals.inputs.childFirstName}
+                  {locals.inputs.firstName}
               </View>
               <View style={customFormStyles.flexInput}>
-                  {locals.inputs.childLastName}
+                  {locals.inputs.lastName}
               </View>
             </View>
-            {locals.inputs.childGender}
+            {locals.inputs.gender}
             {locals.inputs.streetAddress}
             <View style={customFormStyles.horizontalInputContainer}>
               <View style={customFormStyles.flexInput}>
@@ -120,13 +141,14 @@ function customFormTemplate(locals)
             </View>
             <View>
               {locals.inputs.homePhoneNumber}
-              {locals.inputs.childAge}
+              {locals.inputs.age}
               <Text style={customFormStyles.label}>
                 Child's Date of Birth:*
               </Text>
-              {locals.inputs.childDOB}
-              {locals.inputs.childSchoolGrade}
-              {locals.inputs.childSchoolName}
+              {locals.inputs.DOB}
+              {locals.inputs.schoolGrade}
+              {locals.inputs.schoolName}
+              {locals.inputs.homeChurch}
             </View>
             <Text style={customFormStyles.helpText}>
               Please enter some basic contact information.
@@ -135,15 +157,15 @@ function customFormTemplate(locals)
           <View style={customFormStyles.border}>
             <View style={customFormStyles.horizontalInputContainer}>
               <View style={customFormStyles.flexInput}>
-                {locals.inputs.childMotherName}
+                {locals.inputs.motherName}
               </View>
               <View style={customFormStyles.flexInput}>
-                {locals.inputs.childFatherName}
+                {locals.inputs.fatherName}
               </View>
             </View>
-            {locals.inputs.childOtherGuardianName}
-            {locals.inputs.childOtherGuardianRelationship}
-            {locals.inputs.childOtherGuardianPhoneNumber}
+            {locals.inputs.otherGuardianName}
+            {locals.inputs.otherGuardianRelationship}
+            {locals.inputs.otherGuardianPhoneNumber}
             <Text style={customFormStyles.helpText}>
               Please enter parental/guardian information as appropriate.  Must have at least one.
             </Text>
@@ -162,8 +184,36 @@ function customFormTemplate(locals)
             </Text>
           </View>
           <View style={customFormStyles.border}>
-            
+            {locals.inputs.emergencyName}
+            {locals.inputs.emergencyPhoneNumber}
+            {locals.inputs.allergies}
+            <Text style={customFormStyles.helpText}>
+              Please enter emergency information.
+            </Text>
           </View>
+          <View style={customFormStyles.border}>
+            {locals.inputs.friendRequest}
+            <Text style={customFormStyles.helpText}>
+              Must be a mutual request to be honored before June 1st.
+            </Text>
+          </View>
+          <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInputNoLabelWrap}>
+                <Text style={customFormStyles.label}>
+                  Parent(s) willing to volunteer?
+                </Text>
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.isVolunteer}
+              </View>
+            </View>
+            {locals.inputs.volunteerAgeGroup}
+            <Text style={customFormStyles.helpText}>
+              Please enter volunteer information.
+            </Text>
+          </View>
+
 
         </View>
     );
@@ -173,15 +223,15 @@ var Options = {
   template: customFormTemplate,
 	auto: 'placeholders',
 	fields: {
-		childFirstName: {
+		firstName: {
 			error: "Child's first name is required",
 			placeholder: "Child's First Name*"
 		},
-		childLastName: {
+		lastName: {
 			error: "Child's last name is required",
 			placeholder: "Child's Last Name*"
 		},
-		childGender: {
+		gender: {
 			error: "Child's gender is required",
 			order: 'asc',
 			nullOption: {value: '', text: "Child's Gender*"}
@@ -211,38 +261,63 @@ var Options = {
 		homeEmailAddress: {
 			placeholder: "Home Email Address",
 		},
-		childAge: {
+		age: {
 			error: "Child's age is required",
       placeholder: "Child's Age*"
 		},
-		childDOB: {
+		DOB: {
       mode: "date",
       placeholder: "Child's Date of Birth*"
 		},
-    childSchoolGrade: {
+    schoolGrade: {
       placeholder: "Child's 2016-2017 School Grade"
     },
-    childSchoolName: {
+    schoolName: {
 			error: "Child's school name is required",
       placeholder: "Child's School Name*"
     },
-    childMotherName: {
+    motherName: {
 			// error: "Child's mother's name is required",
       placeholder: "Child's Mother's Name"
     },
-    childFatherName: {
+    fatherName: {
 			// error: "Child's father's name is required",
       placeholder: "Child's Father's Name"
     },
-    childOtherGuardianName: {
+    otherGuardianName: {
       placeholder: "Guardian Name"
     },
-    childOtherGuardianRelationship: {
+    otherGuardianRelationship: {
       placeholder: "Guardian Relationship"
     },
-    childOtherGuardianPhoneNumber: {
+    otherGuardianPhoneNumber: {
       placeholder: "Guardian Phone Number",
+    },
+    emergencyName: {
+      error: "Emergency contact name is required.",
+      placeholder: "Emergency Contact Name*"
+    },
+    emergencyPhoneNumber: {
+      error: "Emergency contact phone number is required.",
+      placeholder: "Emergency Contact Number*"
+    },
+    allergies:{
+      placeholder: "Allergies or other medical conditions"
+    },
+    homeChurch:{
+      placeholder: "Home Church"
+    },
+    friendRequest: {
+      placeholder: "Friend requested to be placed with"
+    },
+    isVolunteer: {
+      label: " "
+    },
+    volunteerAgeGroup: {
+			order: 'asc',
+			nullOption: {value: '', text: "Volunteer Age Group"}
     }
+
 	}
 };
 
