@@ -17,6 +17,7 @@ var Gender = Tcomb.enums({
 		M: 'Male',
 		F: 'Female'
 });
+
 var ZipCode = Tcomb.refinement(Tcomb.Number,
   function(n) {
     return (n > 0 && n.toString().length == 5);
@@ -25,6 +26,7 @@ var ZipCode = Tcomb.refinement(Tcomb.Number,
 ZipCode.getValidationErrorMessage = function(value,path,context) {
 	return 'A zip code is required';
 };
+
 var Age = Tcomb.refinement(Tcomb.Number,
   function(n) {
     return (n >= 3);
@@ -33,6 +35,7 @@ var Age = Tcomb.refinement(Tcomb.Number,
 Age.getValidationErrorMessage = function(value,path,context) {
   return 'Child must be 3 years of age or older';
 };
+
 var SchoolGrade = Tcomb.refinement(Tcomb.Number,
   function(n) {
       return (n <= 10);
@@ -41,11 +44,13 @@ var SchoolGrade = Tcomb.refinement(Tcomb.Number,
 SchoolGrade.getValidationErrorMessage = function(value,path,context) {
     return "Child's grade for 2016-2017 school year must be 10th or less"
 };
+
 var VolunteerAgeGroup = Tcomb.enums({
     E: 'Elementary',
     P: 'Preschool',
     O: 'Other'
 });
+
 var Child = Tcomb.struct({
 	firstName: Tcomb.String,
 	lastName: Tcomb.String,
@@ -117,13 +122,27 @@ function customFormTemplate(locals)
         fontWeight: '500',
         fontSize: 17
       },
-      sectionHeader:{
+      sectionHeader1:{
         color: '#000000',
         fontWeight: 'bold',
         fontSize: 17,
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        textDecorationLine: 'underline',
+        textAlign: 'center'
+      },
+      sectionHeader2:{
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: 14,
+        textAlign: 'center'
+      },
+      disclaimerText:{
+        color: '#000000',
+        fontSize: 11,
+        textAlign: 'justify'
       }
     });
+    var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
     return (
         <View>
           <View style={customFormStyles.border}>
@@ -241,13 +260,22 @@ function customFormTemplate(locals)
             </Text>
           </View>
           <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInputNoLabelWrap}>
-                <Text style={customFormStyles.sectionHeader}>
+                <Text style={customFormStyles.sectionHeader1}>
                   MUST BE COMPLETED FOR REGISTRATION
                 </Text>
-              </View>
-            </View>
+                <Text style={customFormStyles.sectionHeader2}>
+                  Medical & Liability Release - Valid June 19-24, 2016
+                </Text>
+                <Text style={customFormStyles.disclaimerText}>
+                  In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+                  receive any medical attention or treatment deemed necessary; therefore, I give permission to
+                  any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
+                  for care.  I understand that I am responsible for all expenses and charges for the treatment
+                  and care of my child.  In the event that I am not present at the time of the emergency or
+                  cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
+                  of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
+                  staff in case of an accident and/or injury.
+                </Text>
           </View>
 
 
