@@ -73,6 +73,9 @@ var Child = Tcomb.struct({
   friendRequest: Tcomb.maybe(Tcomb.String),
   isVolunteer: Tcomb.Boolean,
   volunteerAgeGroup: VolunteerAgeGroup,
+  isNurseryRequested: Tcomb.Boolean,
+  volunteerChildName: Tcomb.maybe(Tcomb.String),
+  volunteerChildAge: Tcomb.Number,
 
 
 	orderCD: Tcomb.Boolean
@@ -113,6 +116,12 @@ function customFormTemplate(locals)
         color: '#000000',
         fontWeight: '500',
         fontSize: 17
+      },
+      sectionHeader:{
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: 17,
+        fontStyle: 'italic'
       }
     });
     return (
@@ -209,9 +218,36 @@ function customFormTemplate(locals)
               </View>
             </View>
             {locals.inputs.volunteerAgeGroup}
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInputNoLabelWrap}>
+                <Text style={customFormStyles.label}>
+                  Nursery requested?
+                </Text>
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.isNurseryRequested}
+              </View>
+            </View>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.volunteerChildName}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.volunteerChildAge}
+              </View>
+            </View>
             <Text style={customFormStyles.helpText}>
               Please enter volunteer information.
             </Text>
+          </View>
+          <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInputNoLabelWrap}>
+                <Text style={customFormStyles.sectionHeader}>
+                  MUST BE COMPLETED FOR REGISTRATION
+                </Text>
+              </View>
+            </View>
           </View>
 
 
@@ -316,7 +352,17 @@ var Options = {
     volunteerAgeGroup: {
 			order: 'asc',
 			nullOption: {value: '', text: "Volunteer Age Group"}
+    },
+    isNurseryRequested: {
+      label: " "
+    },
+    volunteerChildName: {
+      placeholder: "Volunteer child's name"
+    },
+    volunteerChildAge: {
+      placeholder: "Volunteer child's age"
     }
+
 
 	}
 };
