@@ -81,6 +81,8 @@ var Child = Tcomb.struct({
   isNurseryRequested: Tcomb.Boolean,
   volunteerChildName: Tcomb.maybe(Tcomb.String),
   volunteerChildAge: Tcomb.Number,
+  parentSignature: Tcomb.String,
+  parentSignatureDate: Tcomb.Date,
 
 
 	orderCD: Tcomb.Boolean
@@ -139,7 +141,8 @@ function customFormTemplate(locals)
       disclaimerText:{
         color: '#000000',
         fontSize: 11,
-        textAlign: 'justify'
+        textAlign: 'justify',
+        padding: 7
       }
     });
     var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
@@ -276,6 +279,11 @@ function customFormTemplate(locals)
                   of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
                   staff in case of an accident and/or injury.
                 </Text>
+                {locals.inputs.parentSignature}
+                <Text style={customFormStyles.label}>
+                  Date Signed:*
+                </Text>
+                {locals.inputs.parentSignatureDate}
           </View>
 
 
@@ -331,7 +339,7 @@ var Options = {
 		},
 		DOB: {
       mode: "date",
-      placeholder: "Child's Date of Birth*"
+      // placeholder: "Child's Date of Birth*"
 		},
     schoolGrade: {
       placeholder: "Child's 2016-2017 School Grade"
@@ -389,6 +397,13 @@ var Options = {
     },
     volunteerChildAge: {
       placeholder: "Volunteer child's age"
+    },
+    parentSignature: {
+      error: "Parent/Guardian signature required",
+      placeholder: "Parent/Guardian signature*"
+    },
+    parentSignatureDate: {
+      mode: 'date'
     }
 
 
