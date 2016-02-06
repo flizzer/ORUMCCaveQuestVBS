@@ -83,6 +83,9 @@ var Child = Tcomb.struct({
   volunteerChildAge: Tcomb.Number,
   parentSignature: Tcomb.String,
   parentSignatureDate: Tcomb.Date,
+  parentInsuranceCompany: Tcomb.String,
+  parentInsuranceNumber: Tcomb.String,
+  parentInsuranceGroup: Tcomb.String,
 
 
 	orderCD: Tcomb.Boolean
@@ -137,6 +140,12 @@ function customFormTemplate(locals)
         fontWeight: 'bold',
         fontSize: 14,
         textAlign: 'center'
+      },
+      sectionHeader3:{
+        color: '#000000',
+        fontWeight: '500',
+        fontSize: 17,
+        padding: 5
       },
       disclaimerText:{
         color: '#000000',
@@ -284,6 +293,12 @@ function customFormTemplate(locals)
                   Date Signed:*
                 </Text>
                 {locals.inputs.parentSignatureDate}
+                <Text style={customFormStyles.sectionHeader3}>
+                  Insurance Information:
+                </Text>
+                {locals.inputs.parentInsuranceCompany}
+                {locals.inputs.parentInsuranceNumber}
+                {locals.inputs.parentInsuranceGroup}
           </View>
 
 
@@ -393,20 +408,30 @@ var Options = {
       label: " "
     },
     volunteerChildName: {
-      placeholder: "Volunteer child's name"
+      placeholder: "Volunteer Child's Name"
     },
     volunteerChildAge: {
-      placeholder: "Volunteer child's age"
+      placeholder: "Volunteer Child's Age"
     },
     parentSignature: {
       error: "Parent/Guardian signature required",
-      placeholder: "Parent/Guardian signature*"
+      placeholder: "Parent/Guardian Signature*"
     },
     parentSignatureDate: {
       mode: 'date'
-    }
-
-
+    },
+    parentInsuranceCompany: {
+      error: "Parent's insurance company required",
+      placeholder: "Parent's Insurance Company*"
+    },
+    parentInsuranceNumber: {
+      error: "Parent's insurance number required",
+      placeholder: "Parent's Insurance Number*"
+    },
+    parentInsuranceGroup: {
+      error: "Parent's insurance group required",
+      placeholder: "Parent's Insurance Group*"
+    },
 	}
 };
 
