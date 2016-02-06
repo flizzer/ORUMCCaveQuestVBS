@@ -268,7 +268,7 @@ function customFormTemplate(locals)
               </View>
             </View>
             <Text style={customFormStyles.helpText}>
-              Please enter volunteer information.
+              Please enter volunteer information if you would like to volunteer.
             </Text>
           </View>
           <View style={customFormStyles.border}>
@@ -293,6 +293,12 @@ function customFormTemplate(locals)
                   Date Signed:*
                 </Text>
                 {locals.inputs.parentSignatureDate}
+                <Text style={customFormStyles.helpText}>
+                  NOTE:  Your name and date above constitute a digital
+                  signature which is legally binding. 
+                </Text>
+          </View>
+          <View style={customFormStyles.border}>
                 <Text style={customFormStyles.sectionHeader3}>
                   Insurance Information:
                 </Text>
