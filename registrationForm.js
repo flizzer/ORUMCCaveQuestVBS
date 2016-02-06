@@ -86,6 +86,11 @@ var Child = Tcomb.struct({
   parentInsuranceCompany: Tcomb.String,
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
+  cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
+  cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
+  cdCheckAmount: Tcomb.Number,
+  cdCheckNumber: Tcomb.maybe(Tcomb.String),
+
 
 
 	orderCD: Tcomb.Boolean
@@ -148,6 +153,25 @@ function customFormTemplate(locals)
         padding: 5
       },
       disclaimerText:{
+        color: '#000000',
+        fontSize: 11,
+        textAlign: 'justify',
+        padding: 7
+      },
+      musicHeader:{
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: 14,
+        textAlign: 'center',
+        textDecorationLine: 'underline'
+      },
+      underlinedText:{
+        textDecorationLine: 'underline'
+      },
+      italicizedText:{
+        fontStyle: 'italic'
+      },
+      musicText:{
         color: '#000000',
         fontSize: 11,
         textAlign: 'justify',
@@ -272,42 +296,75 @@ function customFormTemplate(locals)
             </Text>
           </View>
           <View style={customFormStyles.border}>
-                <Text style={customFormStyles.sectionHeader1}>
-                  MUST BE COMPLETED FOR REGISTRATION
-                </Text>
-                <Text style={customFormStyles.sectionHeader2}>
-                  Medical & Liability Release - Valid June 19-24, 2016
-                </Text>
-                <Text style={customFormStyles.disclaimerText}>
-                  In the event of sickness or some medical emergency, I request that my child {disclaimerName}
-                  receive any medical attention or treatment deemed necessary; therefore, I give permission to
-                  any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
-                  for care.  I understand that I am responsible for all expenses and charges for the treatment
-                  and care of my child.  In the event that I am not present at the time of the emergency or
-                  cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
-                  of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
-                  staff in case of an accident and/or injury.
-                </Text>
-                {locals.inputs.parentSignature}
-                <Text style={customFormStyles.label}>
-                  Date Signed:*
-                </Text>
-                {locals.inputs.parentSignatureDate}
-                <Text style={customFormStyles.helpText}>
-                  NOTE:  Your name and date above constitute a digital
-                  signature which is legally binding. 
-                </Text>
+            <Text style={customFormStyles.sectionHeader1}>
+              MUST BE COMPLETED FOR REGISTRATION
+            </Text>
+            <Text style={customFormStyles.sectionHeader2}>
+              Medical & Liability Release - Valid June 19-24, 2016
+            </Text>
+            <Text style={customFormStyles.disclaimerText}>
+              In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+              receive any medical attention or treatment deemed necessary; therefore, I give permission to
+              any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
+              for care.  I understand that I am responsible for all expenses and charges for the treatment
+              and care of my child.  In the event that I am not present at the time of the emergency or
+              cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
+              of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
+              staff in case of an accident and/or injury.
+            </Text>
+            {locals.inputs.parentSignature}
+            <Text style={customFormStyles.label}>
+              Date Signed:*
+            </Text>
+            {locals.inputs.parentSignatureDate}
+            <Text style={customFormStyles.helpText}>
+              NOTE:  Your name and date above constitute a digital
+              signature which is legally binding.
+            </Text>
           </View>
           <View style={customFormStyles.border}>
-                <Text style={customFormStyles.sectionHeader3}>
-                  Insurance Information:
-                </Text>
-                {locals.inputs.parentInsuranceCompany}
-                {locals.inputs.parentInsuranceNumber}
-                {locals.inputs.parentInsuranceGroup}
+            <Text style={customFormStyles.sectionHeader3}>
+              Insurance Information:
+            </Text>
+            {locals.inputs.parentInsuranceCompany}
+            {locals.inputs.parentInsuranceNumber}
+            {locals.inputs.parentInsuranceGroup}
           </View>
-
-
+          <View style={customFormStyles.border}>
+            <Text style={customFormStyles.musicHeader}>
+              Cave Quest MUSIC will be available by prior purchase ONLY!!
+            </Text>
+            <Text style={customFormStyles.musicText}>
+              Music will be delivered one month prior to the start of VBS.
+              CD cost:  $10.00 each.  At this time we cannot accept payments
+              via this app.  Please pay by check and make payable to:
+              &nbsp;&nbsp;
+              <Text style={customFormStyles.underlinedText}>
+                Oak Ridge UM Church: memo: VBS music.
+              </Text>
+              &nbsp;&nbsp;
+              <Text>
+                No additional copies will be available; this is by&nbsp;
+              </Text>
+              <Text style={customFormStyles.italicizedText}>
+                 prior order only.
+              </Text>
+            </Text>
+            <Text style={customFormStyles.sectionHeader3}>
+              Music ordered:
+            </Text>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.cdQuantityOrdered}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                  {locals.inputs.cdCheckAmount}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.cdCheckNumber}
+              </View>
+            </View>
+          </View>
         </View>
     );
 }
@@ -438,6 +495,16 @@ var Options = {
       error: "Parent's insurance group required",
       placeholder: "Parent's Insurance Group*"
     },
+    cdQuantityOrdered: {
+      placeholder: "# of CDs"
+    },
+    cdCheckAmount: {
+      placeholder: "Cost",
+      editable: false
+    },
+    cdCheckNumber: {
+      placeholder: "Check #"
+    }
 	}
 };
 
