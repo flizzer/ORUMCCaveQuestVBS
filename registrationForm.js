@@ -10,7 +10,8 @@ var {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
+  View,
+  Image
 } = React;
 var Form = Tcomb.form.Form;
 var Gender = Tcomb.enums({
@@ -212,11 +213,27 @@ function customFormTemplate(locals)
         fontSize: 9,
         textDecorationLine: 'underline',
         fontStyle: 'italic',
+      },
+      logo: {
+        width: 140,
+        height: 130,
+        resizeMode: 'contain',
+        flex: 1
+      },
+      imgContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+         paddingBottom: 50,
       }
     });
     var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
     return (
       <View>
+        <View style={customFormStyles.imgContainer}>
+            <Image source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
+              style={customFormStyles.logo}/>
+        </View>
         <View style={customFormStyles.border}>
           <View style={customFormStyles.horizontalInputContainer}>
             <View style={customFormStyles.flexInput}>
