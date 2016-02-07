@@ -100,10 +100,6 @@ var Child = Tcomb.struct({
   tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
   tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
   isNewMemberClass: Tcomb.Boolean,
-
-
-
-	orderCD: Tcomb.Boolean
 });
 
 function customFormTemplate(locals)
@@ -205,282 +201,309 @@ function customFormTemplate(locals)
       newMemberflexInputNoLabelWrap:{
         flex:2,
         padding: 2,
-        //alignItems: 'center',
-         //justifyContent: 'center'
       },
       newMemberFlexInput:{
         alignItems: 'center',
         flex:1,
         padding: 2,
         flexWrap: 'nowrap'
+      },
+      contactText: {
+        fontSize: 9,
+        textDecorationLine: 'underline',
+        fontStyle: 'italic',
       }
     });
     var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
     return (
-        <View>
-          <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                  {locals.inputs.firstName}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                  {locals.inputs.lastName}
-              </View>
+      <View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.firstName}
             </View>
-            {locals.inputs.gender}
-            {locals.inputs.streetAddress}
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.city}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.state}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.zipCode}
-              </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.lastName}
             </View>
-            <View>
-              {locals.inputs.homePhoneNumber}
-              {locals.inputs.age}
-              <Text style={customFormStyles.label}>
-                Child's Date of Birth:*
-              </Text>
-              {locals.inputs.DOB}
-              {locals.inputs.schoolGrade}
-              {locals.inputs.schoolName}
-              {locals.inputs.homeChurch}
-            </View>
-            <Text style={customFormStyles.helpText}>
-              Please enter some basic contact information.
-            </Text>
           </View>
-          <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.motherName}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.fatherName}
-              </View>
+          {locals.inputs.gender}
+          {locals.inputs.streetAddress}
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.city}
             </View>
-            {locals.inputs.otherGuardianName}
-            {locals.inputs.otherGuardianRelationship}
-            {locals.inputs.otherGuardianPhoneNumber}
-            <Text style={customFormStyles.helpText}>
-              Please enter parental/guardian information as appropriate.  Must have at least one.
-            </Text>
-          </View>
-          <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-                <View style={customFormStyles.flexInput}>
-                  {locals.inputs.cellPhoneNumber}
-                </View>
-                <View style={customFormStyles.flexInput}>
-                  {locals.inputs.homeEmailAddress}
-                </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.state}
             </View>
-            <Text style={customFormStyles.helpText}>
-              Please enter either a cell phone number OR an email address for updates regarding VBS week.
-            </Text>
-          </View>
-          <View style={customFormStyles.border}>
-            {locals.inputs.emergencyName}
-            {locals.inputs.emergencyPhoneNumber}
-            {locals.inputs.allergies}
-            <Text style={customFormStyles.helpText}>
-              Please enter emergency information.
-            </Text>
-          </View>
-          <View style={customFormStyles.border}>
-            {locals.inputs.friendRequest}
-            <Text style={customFormStyles.helpText}>
-              Must be a mutual request to be honored before June 1st.
-            </Text>
-          </View>
-          <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInputNoLabelWrap}>
-                <Text style={customFormStyles.label}>
-                  Parent(s) willing to volunteer?
-                </Text>
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.isVolunteer}
-              </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.zipCode}
             </View>
-            {locals.inputs.volunteerAgeGroup}
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInputNoLabelWrap}>
-                <Text style={customFormStyles.label}>
-                  Nursery requested?
-                </Text>
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.isNurseryRequested}
-              </View>
-            </View>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.volunteerChildName}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.volunteerChildAge}
-              </View>
-            </View>
-            <Text style={customFormStyles.helpText}>
-              Please enter volunteer information if you would like to volunteer.
-            </Text>
           </View>
-          <View style={customFormStyles.border}>
-            <Text style={customFormStyles.sectionHeader1}>
-              MUST BE COMPLETED FOR REGISTRATION
-            </Text>
-            <Text style={customFormStyles.sectionHeader2}>
-              Medical & Liability Release - Valid June 19-24, 2016
-            </Text>
-            <Text style={customFormStyles.disclaimerText}>
-              In the event of sickness or some medical emergency, I request that my child {disclaimerName}
-              receive any medical attention or treatment deemed necessary; therefore, I give permission to
-              any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
-              for care.  I understand that I am responsible for all expenses and charges for the treatment
-              and care of my child.  In the event that I am not present at the time of the emergency or
-              cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
-              of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
-              staff in case of an accident and/or injury.
-            </Text>
-            {locals.inputs.parentSignature}
+          <View>
+            {locals.inputs.homePhoneNumber}
+            {locals.inputs.age}
             <Text style={customFormStyles.label}>
-              Date Signed:*
+              Child's Date of Birth:*
             </Text>
-            {locals.inputs.parentSignatureDate}
-            <Text style={customFormStyles.helpText}>
-              NOTE:  Your name and date above constitute a digital
-              signature which is legally binding.
-            </Text>
+            {locals.inputs.DOB}
+            {locals.inputs.schoolGrade}
+            {locals.inputs.schoolName}
+            {locals.inputs.homeChurch}
           </View>
-          <View style={customFormStyles.border}>
-            <Text style={customFormStyles.sectionHeader3}>
-              Insurance Information:
-            </Text>
-            {locals.inputs.parentInsuranceCompany}
-            {locals.inputs.parentInsuranceNumber}
-            {locals.inputs.parentInsuranceGroup}
-          </View>
-          <View style={customFormStyles.border}>
-            <Text style={customFormStyles.musicHeader}>
-              Cave Quest MUSIC will be available by prior purchase ONLY!!
-            </Text>
-            <Text style={customFormStyles.musicText}>
-              Music will be delivered one month prior to the start of VBS.
-              CD cost:  $10.00 each.  At this time we cannot accept payments
-              via this app.  Please pay by check and make payable to:
-              &nbsp;&nbsp;
-              <Text style={customFormStyles.underlinedText}>
-                Oak Ridge UM Church: memo: VBS music.
-              </Text>
-              &nbsp;&nbsp;
-              <Text>
-                No additional copies will be available; this is by&nbsp;
-              </Text>
-              <Text style={customFormStyles.italicizedText}>
-                 prior order only.
-              </Text>
-            </Text>
-            <Text style={customFormStyles.sectionHeader3}>
-              Music ordered:
-            </Text>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.cdQuantityOrdered}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                  {locals.inputs.cdCheckAmount}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.cdCheckNumber}
-              </View>
+          <Text style={customFormStyles.helpText}>
+            Please enter some basic contact information.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.motherName}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.fatherName}
             </View>
           </View>
-          <View style={customFormStyles.border}>
-            <Text style={customFormStyles.tshirtHeader}>
-              T-shirt Size Desired:
-            </Text>
-            <Text style={customFormStyles.tshirtText}>
-              <Text style={customFormStyles.underlinedText}>
-                If you are unsure, size up!
-              </Text>
-              &nbsp;&nbsp;All T-shirts are 50/50% pre-shrunk.  To ensure a T-shirt, all
-              registration information must be complete and received by the
-              church office by&nbsp;&nbsp;
-              <Text style={customFormStyles.boldText}>
-                May 15, 2016.&nbsp;&nbsp;
-              </Text>
-              No exceptions!&nbsp;&nbsp;
-              <Text style={customFormStyles.boldText}>
-                ONLY child/youth participants and adult volunteers who serve
-                3 nights or more will receive a T-shirt.  No switching of sizes
-                at registration, and we cannot order extras.
-              </Text>
-              &nbsp;&nbsp;
-              <Text style={customFormStyles.underlinedText}>
-                If you are unsure, size up!
-              </Text>
-            </Text>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeC_XS}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeC_SM}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeC_MD}
-              </View>
+          {locals.inputs.otherGuardianName}
+          {locals.inputs.otherGuardianRelationship}
+          {locals.inputs.otherGuardianPhoneNumber}
+          <Text style={customFormStyles.helpText}>
+            Please enter parental/guardian information as appropriate.  Must have at least one.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.cellPhoneNumber}
             </View>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeC_LG}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeY_XL}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeAdult_SM}
-              </View>
-            </View>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeAdult_MD}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeAdult_LG}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeAdult_XL}
-              </View>
-              <View style={customFormStyles.flexInput}>
-                {locals.inputs.tshirtSizeAdult_XXL}
-              </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.homeEmailAddress}
             </View>
           </View>
-          <View style={customFormStyles.border}>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.newMemberflexInputNoLabelWrap}>
-                <Text style={customFormStyles.label}>
-                  &#10070;&nbsp;
-                  <Text style={customFormStyles.italicizedText}>
-                    Parents interested in New
-                    &nbsp;&nbsp;&nbsp;&nbsp;Member/Get Acquainted Class?
-                  </Text>
-                </Text>
-              </View>
-              <View style={customFormStyles.newMemberFlexInput}>
-                {locals.inputs.isNewMemberClass}
-              </View>
+          <Text style={customFormStyles.helpText}>
+            Please enter either a cell phone number OR an email address for updates regarding VBS week.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          {locals.inputs.emergencyName}
+          {locals.inputs.emergencyPhoneNumber}
+          {locals.inputs.allergies}
+          <Text style={customFormStyles.helpText}>
+            Please enter emergency information.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          {locals.inputs.friendRequest}
+          <Text style={customFormStyles.helpText}>
+            Must be a mutual request to be honored before June 1st.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInputNoLabelWrap}>
+              <Text style={customFormStyles.label}>
+                Parent(s) willing to volunteer?
+              </Text>
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.isVolunteer}
+            </View>
+          </View>
+          {locals.inputs.volunteerAgeGroup}
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInputNoLabelWrap}>
+              <Text style={customFormStyles.label}>
+                Nursery requested?
+              </Text>
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.isNurseryRequested}
+            </View>
+          </View>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.volunteerChildName}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.volunteerChildAge}
+            </View>
+          </View>
+          <Text style={customFormStyles.helpText}>
+            Please enter volunteer information if you would like to volunteer.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <Text style={customFormStyles.sectionHeader1}>
+            MUST BE COMPLETED FOR REGISTRATION
+          </Text>
+          <Text style={customFormStyles.sectionHeader2}>
+            Medical & Liability Release - Valid June 19-24, 2016
+          </Text>
+          <Text style={customFormStyles.disclaimerText}>
+            In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+            receive any medical attention or treatment deemed necessary; therefore, I give permission to
+            any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
+            for care.  I understand that I am responsible for all expenses and charges for the treatment
+            and care of my child.  In the event that I am not present at the time of the emergency or
+            cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
+            of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
+            staff in case of an accident and/or injury.
+          </Text>
+          {locals.inputs.parentSignature}
+          <Text style={customFormStyles.label}>
+            Date Signed:*
+          </Text>
+          {locals.inputs.parentSignatureDate}
+          <Text style={customFormStyles.helpText}>
+            NOTE:  Your name and date above constitute a digital
+            signature which is legally binding.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <Text style={customFormStyles.sectionHeader3}>
+            Insurance Information:
+          </Text>
+          {locals.inputs.parentInsuranceCompany}
+          {locals.inputs.parentInsuranceNumber}
+          {locals.inputs.parentInsuranceGroup}
+        </View>
+        <View style={customFormStyles.border}>
+          <Text style={customFormStyles.musicHeader}>
+            Cave Quest MUSIC will be available by prior purchase ONLY!!
+          </Text>
+          <Text style={customFormStyles.musicText}>
+            Music will be delivered one month prior to the start of VBS.
+            CD cost:  $10.00 each.  At this time we cannot accept payments
+            via this app.  Please pay by check and make payable to:
+            &nbsp;&nbsp;
+            <Text style={customFormStyles.underlinedText}>
+              Oak Ridge UM Church: memo: VBS music.
+            </Text>
+            &nbsp;&nbsp;
+            <Text>
+              No additional copies will be available; this is by&nbsp;
+            </Text>
+            <Text style={customFormStyles.italicizedText}>
+              prior order only.
+            </Text>
+          </Text>
+          <Text style={customFormStyles.sectionHeader3}>
+            Music ordered:
+          </Text>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.cdQuantityOrdered}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.cdCheckAmount}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.cdCheckNumber}
             </View>
           </View>
         </View>
+        <View style={customFormStyles.border}>
+          <Text style={customFormStyles.tshirtHeader}>
+            T-shirt Size Desired:
+          </Text>
+          <Text style={customFormStyles.tshirtText}>
+            <Text style={customFormStyles.underlinedText}>
+              If you are unsure, size up!
+            </Text>
+            &nbsp;&nbsp;All T-shirts are 50/50% pre-shrunk.  To ensure a T-shirt, all
+            registration information must be complete and received by the
+            church office by&nbsp;&nbsp;
+            <Text style={customFormStyles.boldText}>
+              May 15, 2016.&nbsp;&nbsp;
+            </Text>
+            No exceptions!&nbsp;&nbsp;
+            <Text style={customFormStyles.boldText}>
+              ONLY child/youth participants and adult volunteers who serve
+              3 nights or more will receive a T-shirt.  No switching of sizes
+              at registration, and we cannot order extras.
+            </Text>
+            &nbsp;&nbsp;
+            <Text style={customFormStyles.underlinedText}>
+              If you are unsure, size up!
+            </Text>
+          </Text>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeC_XS}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeC_SM}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeC_MD}
+            </View>
+          </View>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeC_LG}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeY_XL}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeAdult_SM}
+            </View>
+          </View>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeAdult_MD}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeAdult_LG}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeAdult_XL}
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.tshirtSizeAdult_XXL}
+            </View>
+          </View>
+        </View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.newMemberflexInputNoLabelWrap}>
+              <Text style={customFormStyles.label}>
+                &#10070;&nbsp;
+                <Text style={customFormStyles.italicizedText}>
+                  Parents interested in New
+                  &nbsp;&nbsp;&nbsp;&nbsp;Member/Get Acquainted Class?
+                </Text>
+              </Text>
+            </View>
+            <View style={customFormStyles.newMemberFlexInput}>
+              {locals.inputs.isNewMemberClass}
+            </View>
+          </View>
+          <Text style={customFormStyles.helpText}>
+            Class meets M/T of VBS Week.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <Text>
+             <Text style={customFormStyles.contactText}>
+               Oak Ridge UMC
+             </Text>
+             &nbsp;&nbsp;
+             <Text style={customFormStyles.contactText}>
+               2424 Oak Rige Rd.
+             </Text>
+             &nbsp;&nbsp;
+             <Text style={customFormStyles.contactText}>
+               Oak Ridge, NC 27310
+             </Text>
+             &nbsp;&nbsp;
+             <Text style={customFormStyles.contactText}>
+               336-643-4690
+             </Text>
+           </Text>
+          </View>
+        </View>
+      </View>
     );
 }
 
