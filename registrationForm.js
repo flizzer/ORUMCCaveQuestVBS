@@ -87,9 +87,19 @@ var Child = Tcomb.struct({
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
   cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
-  cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
   cdCheckAmount: Tcomb.Number,
   cdCheckNumber: Tcomb.maybe(Tcomb.String),
+  tshirtSizeC_XS: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeC_SM: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeC_MD: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeC_LG: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeY_XL: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeAdult_SM: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeAdult_MD: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeAdult_LG: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
+  tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
+  isNewMemberClass: Tcomb.Boolean,
 
 
 
@@ -171,11 +181,38 @@ function customFormTemplate(locals)
       italicizedText:{
         fontStyle: 'italic'
       },
+      boldText:{
+        fontWeight: 'bold'
+      },
       musicText:{
         color: '#000000',
         fontSize: 11,
         textAlign: 'justify',
         padding: 7
+      },
+      tshirtHeader:{
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: 14,
+        textAlign: 'left'
+      },
+      tshirtText:{
+        color: '#000000',
+        fontSize: 11,
+        textAlign: 'justify',
+        padding: 7
+      },
+      newMemberflexInputNoLabelWrap:{
+        flex:2,
+        padding: 2,
+        //alignItems: 'center',
+         //justifyContent: 'center'
+      },
+      newMemberFlexInput:{
+        alignItems: 'center',
+        flex:1,
+        padding: 2,
+        flexWrap: 'nowrap'
       }
     });
     var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
@@ -365,6 +402,84 @@ function customFormTemplate(locals)
               </View>
             </View>
           </View>
+          <View style={customFormStyles.border}>
+            <Text style={customFormStyles.tshirtHeader}>
+              T-shirt Size Desired:
+            </Text>
+            <Text style={customFormStyles.tshirtText}>
+              <Text style={customFormStyles.underlinedText}>
+                If you are unsure, size up!
+              </Text>
+              &nbsp;&nbsp;All T-shirts are 50/50% pre-shrunk.  To ensure a T-shirt, all
+              registration information must be complete and received by the
+              church office by&nbsp;&nbsp;
+              <Text style={customFormStyles.boldText}>
+                May 15, 2016.&nbsp;&nbsp;
+              </Text>
+              No exceptions!&nbsp;&nbsp;
+              <Text style={customFormStyles.boldText}>
+                ONLY child/youth participants and adult volunteers who serve
+                3 nights or more will receive a T-shirt.  No switching of sizes
+                at registration, and we cannot order extras.
+              </Text>
+              &nbsp;&nbsp;
+              <Text style={customFormStyles.underlinedText}>
+                If you are unsure, size up!
+              </Text>
+            </Text>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeC_XS}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeC_SM}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeC_MD}
+              </View>
+            </View>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeC_LG}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeY_XL}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeAdult_SM}
+              </View>
+            </View>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeAdult_MD}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeAdult_LG}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeAdult_XL}
+              </View>
+              <View style={customFormStyles.flexInput}>
+                {locals.inputs.tshirtSizeAdult_XXL}
+              </View>
+            </View>
+          </View>
+          <View style={customFormStyles.border}>
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.newMemberflexInputNoLabelWrap}>
+                <Text style={customFormStyles.label}>
+                  &#10070;&nbsp;
+                  <Text style={customFormStyles.italicizedText}>
+                    Parents interested in New
+                    &nbsp;&nbsp;&nbsp;&nbsp;Member/Get Acquainted Class?
+                  </Text>
+                </Text>
+              </View>
+              <View style={customFormStyles.newMemberFlexInput}>
+                {locals.inputs.isNewMemberClass}
+              </View>
+            </View>
+          </View>
         </View>
     );
 }
@@ -504,6 +619,39 @@ var Options = {
     },
     cdCheckNumber: {
       placeholder: "Check #"
+    },
+    tshirtSizeC_XS: {
+      placeholder: "C/XS (2-4)"
+    },
+    tshirtSizeC_SM: {
+      placeholder: "C/SM (6-8)"
+    },
+    tshirtSizeC_MD: {
+      placeholder: "C/MD (10-12)"
+    },
+    tshirtSizeC_LG: {
+      placeholder: "C/LG (14-16)"
+    },
+    tshirtSizeY_XL: {
+      placeholder: "Y/XL (18-20)"
+    },
+    tshirtSizeAdult_SM: {
+      placeholder: "Adult SM"
+    },
+    tshirtSizeAdult_MD: {
+      placeholder: "Adult MD"
+    },
+    tshirtSizeAdult_LG: {
+      placeholder: "Adult LG"
+    },
+    tshirtSizeAdult_XL: {
+      placeholder: "Adult XL"
+    },
+    tshirtSizeAdult_XXL:{
+      placeholder: "Adult XXL"
+    },
+    isNewMemberClass: {
+      label: " "
     }
 	}
 };
