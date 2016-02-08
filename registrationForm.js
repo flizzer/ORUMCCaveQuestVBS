@@ -82,8 +82,7 @@ var Child = Tcomb.struct({
   isNurseryRequested: Tcomb.Boolean,
   volunteerChildName: Tcomb.maybe(Tcomb.String),
   volunteerChildAge: Tcomb.Number,
-  parentSignature: Tcomb.String,
-  parentSignatureDate: Tcomb.Date,
+  isAcceptTerms: Tcomb.Boolean,
   parentInsuranceCompany: Tcomb.String,
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
@@ -349,41 +348,6 @@ function customFormTemplate(locals)
           </Text>
         </View>
         <View style={customFormStyles.border}>
-          <Text style={customFormStyles.sectionHeader1}>
-            MUST BE COMPLETED FOR REGISTRATION
-          </Text>
-          <Text style={customFormStyles.sectionHeader2}>
-            Medical & Liability Release - Valid June 19-24, 2016
-          </Text>
-          <Text style={customFormStyles.disclaimerText}>
-            In the event of sickness or some medical emergency, I request that my child {disclaimerName}
-            receive any medical attention or treatment deemed necessary; therefore, I give permission to
-            any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
-            for care.  I understand that I am responsible for all expenses and charges for the treatment
-            and care of my child.  In the event that I am not present at the time of the emergency or
-            cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
-            of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
-            staff in case of an accident and/or injury.
-          </Text>
-          {locals.inputs.parentSignature}
-          <Text style={customFormStyles.label}>
-            Date Signed:*
-          </Text>
-          {locals.inputs.parentSignatureDate}
-          <Text style={customFormStyles.helpText}>
-            NOTE:  Your name and date above constitute a digital
-            signature which is legally binding.
-          </Text>
-        </View>
-        <View style={customFormStyles.border}>
-          <Text style={customFormStyles.sectionHeader3}>
-            Insurance Information:
-          </Text>
-          {locals.inputs.parentInsuranceCompany}
-          {locals.inputs.parentInsuranceNumber}
-          {locals.inputs.parentInsuranceGroup}
-        </View>
-        <View style={customFormStyles.border}>
           <Text style={customFormStyles.musicHeader}>
             Cave Quest MUSIC will be available by prior purchase ONLY!!
           </Text>
@@ -497,6 +461,45 @@ function customFormTemplate(locals)
           </View>
           <Text style={customFormStyles.helpText}>
             Class meets M/T of VBS Week.
+          </Text>
+        </View>
+        <View style={customFormStyles.border}>
+          <Text style={customFormStyles.sectionHeader1}>
+            MUST BE COMPLETED FOR REGISTRATION
+          </Text>
+          <Text style={customFormStyles.sectionHeader2}>
+            Medical & Liability Release - Valid June 19-24, 2016
+          </Text>
+          <Text style={customFormStyles.disclaimerText}>
+            In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+            receive any medical attention or treatment deemed necessary; therefore, I give permission to
+            any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
+            for care.  I understand that I am responsible for all expenses and charges for the treatment
+            and care of my child.  In the event that I am not present at the time of the emergency or
+            cannot be contacted, my care has been entrusted to the staff and designated ministry leadership
+            of Oak Ridge UMC.  I also release from liability any and all agents of ORUMC, the volunteers and
+            staff in case of an accident and/or injury.
+          </Text>
+          <View style={customFormStyles.border}>
+            <Text style={customFormStyles.sectionHeader3}>
+              Insurance Information:
+            </Text>
+            {locals.inputs.parentInsuranceCompany}
+            {locals.inputs.parentInsuranceNumber}
+            {locals.inputs.parentInsuranceGroup}
+          </View>
+          <View style={customFormStyles.horizontalInputContainer}>
+            <View style={customFormStyles.flexInputNoLabelWrap}>
+              <Text style={customFormStyles.label}>
+                Yes, I accept:*
+              </Text>
+            </View>
+            <View style={customFormStyles.flexInput}>
+              {locals.inputs.isAcceptTerms}
+            </View>
+          </View>
+          <Text style={customFormStyles.helpText}>
+            NOTE:  To register, you must accept the terms of agreement.
           </Text>
         </View>
         <View style={customFormStyles.border}>
@@ -631,12 +634,8 @@ var Options = {
     volunteerChildAge: {
       placeholder: "Volunteer Child's Age"
     },
-    parentSignature: {
-      error: "Parent/Guardian signature required",
-      placeholder: "Parent/Guardian Signature*"
-    },
-    parentSignatureDate: {
-      mode: 'date'
+    isAcceptTerms: {
+        label: " "
     },
     parentInsuranceCompany: {
       error: "Parent's insurance company required",
