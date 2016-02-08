@@ -230,7 +230,7 @@ function customFormTemplate(locals)
     return (
       <View>
         <View style={customFormStyles.imgContainer}>
-            <Image source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
+            <Image source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
               style={customFormStyles.logo}/>
         </View>
         <View style={customFormStyles.border}>
