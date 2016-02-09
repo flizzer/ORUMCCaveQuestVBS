@@ -741,7 +741,7 @@ var registrationFormStyles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     padding: 20,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#C8B8AA'
   }
 });
 
