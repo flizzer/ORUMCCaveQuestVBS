@@ -122,14 +122,19 @@ function customFormTemplate(locals)
         justifyContent: 'center'
       },
       helpText:{
-        color: '#999999',
+        color: '#878B3F',
+        //color: '#999999',
         fontSize: 17,
         marginBottom: 2
       },
       border:{
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: '#cccccc',
+        borderColor: '#9E9382',
+        //borderColor: '#FDCE55',
+        //borderColor: '#C27942',
+        //borderColor: '#cccccc',
+        //borderColor: '#878B3F'
         marginBottom: 5,
         padding: 7
       },
@@ -533,11 +538,13 @@ var Options = {
 	fields: {
 		firstName: {
 			error: "Child's first name is required",
-			placeholder: "Child's First Name*"
+			placeholder: "Child's First Name*",
+      placeholderTextColor: '#3E352F'
 		},
 		lastName: {
 			error: "Child's last name is required",
-			placeholder: "Child's Last Name*"
+			placeholder: "Child's Last Name*",
+      //placeholderTextColor: '#000000'
 		},
 		gender: {
 			error: "Child's gender is required",
@@ -546,77 +553,97 @@ var Options = {
 		},
 		streetAddress: {
 			error: "Street address is required",
-			placeholder: "Street Address*"
+			placeholder: "Street Address*",
+      //placeholderTextColor: '#000000'
 		},
 		city: {
 			error: "City is required",
-			placeholder: "City*"
+			placeholder: "City*",
+      //placeholderTextColor: '#000000'
 		},
 		state: {
 			error: "State is required*",
-			placeholder: "State*"
+			placeholder: "State*",
+      //placeholderTextColor: '#000000'
 		},
 		zipCode: {
-			placeholder: "Zip code*"
+			placeholder: "Zip code*",
+      //placeholderTextColor: '#000000'
 		},
 		homePhoneNumber: {
 			error: "A home phone number is required",
-			placeholder: "Home Phone Number*"
+			placeholder: "Home Phone Number*",
+      //placeholderTextColor: '#000000'
 		},
 		cellPhoneNumber: {
-			placeholder: "Cell Phone Number"
+			placeholder: "Cell Phone Number",
+      //placeholderTextColor: '#000000'
 		},
 		homeEmailAddress: {
 			placeholder: "Home Email Address",
+      //placeholderTextColor: '#000000'
 		},
 		age: {
 			error: "Child's age is required",
-      placeholder: "Child's Age*"
+      placeholder: "Child's Age*",
+      //placeholderTextColor: '#000000'
 		},
 		DOB: {
       mode: "date",
       // placeholder: "Child's Date of Birth*"
 		},
     schoolGrade: {
-      placeholder: "Child's 2016-2017 School Grade"
+      placeholder: "Child's 2016-2017 School Grade",
+      //placeholderTextColor: '#000000'
     },
     schoolName: {
 			error: "Child's school name is required",
-      placeholder: "Child's School Name*"
+      placeholder: "Child's School Name*",
+      //placeholderTextColor: '#000000'
     },
     motherName: {
 			// error: "Child's mother's name is required",
-      placeholder: "Child's Mother's Name"
+      placeholder: "Child's Mother's Name",
+      //placeholderTextColor: '#000000'
     },
     fatherName: {
 			// error: "Child's father's name is required",
-      placeholder: "Child's Father's Name"
+      placeholder: "Child's Father's Name",
+      //placeholderTextColor: '#000000'
     },
     otherGuardianName: {
-      placeholder: "Guardian Name"
+      placeholder: "Guardian Name",
+      //placeholderTextColor: '#000000'
     },
     otherGuardianRelationship: {
-      placeholder: "Guardian Relationship"
+      placeholder: "Guardian Relationship",
+      //placeholderTextColor: '#000000'
     },
     otherGuardianPhoneNumber: {
       placeholder: "Guardian Phone Number",
+      //placeholderTextColor: '#000000'
     },
     emergencyName: {
       error: "Emergency contact name is required.",
-      placeholder: "Emergency Contact Name*"
+      placeholder: "Emergency Contact Name*",
+      //placeholderTextColor: '#000000'
     },
     emergencyPhoneNumber: {
       error: "Emergency contact phone number is required.",
-      placeholder: "Emergency Contact Number*"
+      placeholder: "Emergency Contact Number*",
+      //placeholderTextColor: '#000000'
     },
     allergies:{
-      placeholder: "Allergies or other medical conditions"
+      placeholder: "Allergies or other medical conditions",
+      //placeholderTextColor: '#000000'
     },
     homeChurch:{
-      placeholder: "Home Church"
+      placeholder: "Home Church",
+      //placeholderTextColor: '#000000'
     },
     friendRequest: {
-      placeholder: "Friend requested to be placed with"
+      placeholder: "Friend requested to be placed with",
+      //placeholderTextColor: '#000000'
     },
     isVolunteer: {
       label: " "
@@ -629,65 +656,83 @@ var Options = {
       label: " "
     },
     volunteerChildName: {
-      placeholder: "Volunteer Child's Name"
+      placeholder: "Volunteer Child's Name",
+      //placeholderTextColor: '#000000'
     },
     volunteerChildAge: {
-      placeholder: "Volunteer Child's Age"
+      placeholder: "Volunteer Child's Age",
+      //placeholderTextColor: '#000000'
     },
     isAcceptTerms: {
         label: " "
     },
     parentInsuranceCompany: {
       error: "Parent's insurance company required",
-      placeholder: "Parent's Insurance Company*"
+      placeholder: "Parent's Insurance Company*",
+      //placeholderTextColor: '#000000'
     },
     parentInsuranceNumber: {
       error: "Parent's insurance number required",
-      placeholder: "Parent's Insurance Number*"
+      placeholder: "Parent's Insurance Number*",
+      //placeholderTextColor: '#000000'
     },
     parentInsuranceGroup: {
       error: "Parent's insurance group required",
-      placeholder: "Parent's Insurance Group*"
+      placeholder: "Parent's Insurance Group*",
+      //placeholderTextColor: '#000000'
     },
     cdQuantityOrdered: {
-      placeholder: "# of CDs"
+      placeholder: "# of CDs",
+      //placeholderTextColor: '#000000'
     },
     cdCheckAmount: {
       placeholder: "Cost",
+      //placeholderTextColor: '#000000',
       editable: false
     },
     cdCheckNumber: {
-      placeholder: "Check #"
+      placeholder: "Check #",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeC_XS: {
-      placeholder: "C/XS (2-4)"
+      placeholder: "C/XS (2-4)",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeC_SM: {
-      placeholder: "C/SM (6-8)"
+      placeholder: "C/SM (6-8)",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeC_MD: {
-      placeholder: "C/MD (10-12)"
+      placeholder: "C/MD (10-12)",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeC_LG: {
-      placeholder: "C/LG (14-16)"
+      placeholder: "C/LG (14-16)",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeY_XL: {
-      placeholder: "Y/XL (18-20)"
+      placeholder: "Y/XL (18-20)",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeAdult_SM: {
-      placeholder: "Adult SM"
+      placeholder: "Adult SM",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeAdult_MD: {
-      placeholder: "Adult MD"
+      placeholder: "Adult MD",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeAdult_LG: {
-      placeholder: "Adult LG"
+      placeholder: "Adult LG",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeAdult_XL: {
-      placeholder: "Adult XL"
+      placeholder: "Adult XL",
+      //placeholderTextColor: '#000000'
     },
     tshirtSizeAdult_XXL:{
-      placeholder: "Adult XXL"
+      placeholder: "Adult XXL",
+      //placeholderTextColor: '#000000'
     },
     isNewMemberClass: {
       label: " "
@@ -724,8 +769,10 @@ var RegistrationForm = React.createClass({
 var registrationFormStyles = StyleSheet.create({
   button: {
     height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
+    //backgroundColor: '#48BBEC',
+    backgroundColor: '#5C3B69',
+    borderColor: '#5C3B69',
+    //borderColor: '#48BBEC',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
