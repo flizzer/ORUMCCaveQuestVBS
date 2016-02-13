@@ -6,6 +6,8 @@ var React = require('react-native');
 var Tcomb = require('tcomb-form-native');
 var _ = require('lodash');
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
+Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
+Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
 var {
   ScrollView,
   StyleSheet,
@@ -694,7 +696,7 @@ var Options = {
     cdCheckAmount: {
       placeholder: "Cost",
       //placeholderTextColor: '#000000',
-      editable: true
+      editable: false
     },
     cdCheckNumber: {
       placeholder: "Check #",
