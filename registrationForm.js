@@ -5,6 +5,7 @@
 var React = require('react-native');
 var Tcomb = require('tcomb-form-native');
 var _ = require('lodash');
+Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
 var {
   ScrollView,
   StyleSheet,
@@ -81,13 +82,13 @@ var Child = Tcomb.struct({
   volunteerAgeGroup: VolunteerAgeGroup,
   isNurseryRequested: Tcomb.Boolean,
   volunteerChildName: Tcomb.maybe(Tcomb.String),
-  volunteerChildAge: Tcomb.Number,
+  volunteerChildAge: Tcomb.maybe(Tcomb.Number),
   isAcceptTerms: Tcomb.Boolean,
   parentInsuranceCompany: Tcomb.String,
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
   cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
-  cdCheckAmount: Tcomb.Number,
+  cdCheckAmount: Tcomb.maybe(Tcomb.Number),
   cdCheckNumber: Tcomb.maybe(Tcomb.String),
   tshirtSizeC_XS: Tcomb.maybe(Tcomb.Number),
   tshirtSizeC_SM: Tcomb.maybe(Tcomb.Number),
@@ -139,8 +140,10 @@ function customFormTemplate(locals)
         padding: 7
       },
       label:{
-        color: '#000000',
-        fontWeight: '500',
+        color: '#A3938B',
+        //color: '#000000',
+        fontWeight: 'normal',
+        //fontWeight: '500',
         fontSize: 17
       },
       sectionHeader1:{
@@ -231,7 +234,7 @@ function customFormTemplate(locals)
          paddingBottom: 50,
       }
     });
-    var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
+    // var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
     return (
       <View>
         <View style={customFormStyles.imgContainer}>
@@ -476,7 +479,7 @@ function customFormTemplate(locals)
             Medical & Liability Release - Valid June 19-24, 2016
           </Text>
           <Text style={customFormStyles.disclaimerText}>
-            In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+            In the event of sickness or some medical emergency, I request that my child
             receive any medical attention or treatment deemed necessary; therefore, I give permission to
             any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
             for care.  I understand that I am responsible for all expenses and charges for the treatment
@@ -539,7 +542,7 @@ var Options = {
 		firstName: {
 			error: "Child's first name is required",
 			placeholder: "Child's First Name*",
-      placeholderTextColor: '#3E352F'
+      // placeholderTextColor: '#3E352F'
 		},
 		lastName: {
 			error: "Child's last name is required",
@@ -646,14 +649,16 @@ var Options = {
       //placeholderTextColor: '#000000'
     },
     isVolunteer: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
     },
     volunteerAgeGroup: {
 			order: 'asc',
 			nullOption: {value: '', text: "Volunteer Age Group"}
     },
     isNurseryRequested: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
     },
     volunteerChildName: {
       placeholder: "Volunteer Child's Name",
@@ -664,7 +669,8 @@ var Options = {
       //placeholderTextColor: '#000000'
     },
     isAcceptTerms: {
-        label: " "
+        label: " ",
+        onTintColor: '#5C3B69'
     },
     parentInsuranceCompany: {
       error: "Parent's insurance company required",
@@ -688,7 +694,7 @@ var Options = {
     cdCheckAmount: {
       placeholder: "Cost",
       //placeholderTextColor: '#000000',
-      editable: false
+      editable: true
     },
     cdCheckNumber: {
       placeholder: "Check #",
@@ -735,7 +741,8 @@ var Options = {
       //placeholderTextColor: '#000000'
     },
     isNewMemberClass: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
     }
 	}
 };
