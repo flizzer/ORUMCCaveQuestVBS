@@ -8,6 +8,7 @@ var _ = require('lodash');
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
+
 var {
   ScrollView,
   StyleSheet,
@@ -264,7 +265,11 @@ function customFormTemplate(locals)
             <Text style={customFormStyles.label}>
               Child's Date of Birth:*
             </Text>
-            {locals.inputs.DOB}
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInputNoLabelWrap}>
+                {locals.inputs.DOB}
+              </View>
+            </View>
             {locals.inputs.schoolGrade}
             {locals.inputs.schoolName}
             {locals.inputs.homeChurch}
