@@ -86,7 +86,6 @@ var Child = Tcomb.struct({
   isNurseryRequested: Tcomb.Boolean,
   volunteerChildName: Tcomb.maybe(Tcomb.String),
   volunteerChildAge: Tcomb.maybe(Tcomb.Number),
-  isAcceptTerms: Tcomb.Boolean,
   parentInsuranceCompany: Tcomb.String,
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
@@ -104,6 +103,7 @@ var Child = Tcomb.struct({
   tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
   tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
   isNewMemberClass: Tcomb.Boolean,
+  isAcceptTerms: Tcomb.Boolean,
 });
 
 function customFormTemplate(locals)
@@ -643,10 +643,6 @@ var Options = {
     volunteerChildAge: {
       placeholder: "Volunteer Child's Age",
     },
-    isAcceptTerms: {
-        label: " ",
-        onTintColor: '#5C3B69'
-    },
     parentInsuranceCompany: {
       error: "Parent's insurance company required",
       placeholder: "Parent's Insurance Company*",
@@ -702,6 +698,10 @@ var Options = {
     isNewMemberClass: {
       label: " ",
       onTintColor: '#5C3B69'
+    },
+    isAcceptTerms: {
+        label: " ",
+        onTintColor: '#5C3B69'
     }
 	}
 };
