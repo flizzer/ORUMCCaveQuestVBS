@@ -5,6 +5,10 @@
 var React = require('react-native');
 var Tcomb = require('tcomb-form-native');
 var _ = require('lodash');
+Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
+Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
+Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
+
 var {
   ScrollView,
   StyleSheet,
@@ -81,13 +85,12 @@ var Child = Tcomb.struct({
   volunteerAgeGroup: VolunteerAgeGroup,
   isNurseryRequested: Tcomb.Boolean,
   volunteerChildName: Tcomb.maybe(Tcomb.String),
-  volunteerChildAge: Tcomb.Number,
-  isAcceptTerms: Tcomb.Boolean,
+  volunteerChildAge: Tcomb.maybe(Tcomb.Number),
   parentInsuranceCompany: Tcomb.String,
   parentInsuranceNumber: Tcomb.String,
   parentInsuranceGroup: Tcomb.String,
   cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
-  cdCheckAmount: Tcomb.Number,
+  cdCheckAmount: Tcomb.maybe(Tcomb.Number),
   cdCheckNumber: Tcomb.maybe(Tcomb.String),
   tshirtSizeC_XS: Tcomb.maybe(Tcomb.Number),
   tshirtSizeC_SM: Tcomb.maybe(Tcomb.Number),
@@ -100,6 +103,7 @@ var Child = Tcomb.struct({
   tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
   tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
   isNewMemberClass: Tcomb.Boolean,
+  isAcceptTerms: Tcomb.Boolean,
 });
 
 function customFormTemplate(locals)
@@ -122,20 +126,20 @@ function customFormTemplate(locals)
         justifyContent: 'center'
       },
       helpText:{
-        color: '#999999',
+        color: '#878B3F',
         fontSize: 17,
         marginBottom: 2
       },
       border:{
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: '#cccccc',
+        borderColor: '#9E9382',
         marginBottom: 5,
         padding: 7
       },
       label:{
-        color: '#000000',
-        fontWeight: '500',
+        color: '#A3938B',
+        fontWeight: 'normal',
         fontSize: 17
       },
       sectionHeader1:{
@@ -223,10 +227,10 @@ function customFormTemplate(locals)
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-         paddingBottom: 50,
+        paddingBottom: 50,
+        paddingTop: 30,
       }
     });
-    var disclaimerName = locals.inputs.firstName.value + locals.inputs.lastName.value;
     return (
       <View>
         <View style={customFormStyles.imgContainer}>
@@ -261,7 +265,11 @@ function customFormTemplate(locals)
             <Text style={customFormStyles.label}>
               Child's Date of Birth:*
             </Text>
-            {locals.inputs.DOB}
+            <View style={customFormStyles.horizontalInputContainer}>
+              <View style={customFormStyles.flexInputNoLabelWrap}>
+                {locals.inputs.DOB}
+              </View>
+            </View>
             {locals.inputs.schoolGrade}
             {locals.inputs.schoolName}
             {locals.inputs.homeChurch}
@@ -471,7 +479,7 @@ function customFormTemplate(locals)
             Medical & Liability Release - Valid June 19-24, 2016
           </Text>
           <Text style={customFormStyles.disclaimerText}>
-            In the event of sickness or some medical emergency, I request that my child {disclaimerName}
+            In the event of sickness or some medical emergency, I request that my child
             receive any medical attention or treatment deemed necessary; therefore, I give permission to
             any hospital, doctor, and/or health care provider to transport, treat, and/or admit my child
             for care.  I understand that I am responsible for all expenses and charges for the treatment
@@ -533,11 +541,11 @@ var Options = {
 	fields: {
 		firstName: {
 			error: "Child's first name is required",
-			placeholder: "Child's First Name*"
+			placeholder: "Child's First Name*",
 		},
 		lastName: {
 			error: "Child's last name is required",
-			placeholder: "Child's Last Name*"
+			placeholder: "Child's Last Name*",
 		},
 		gender: {
 			error: "Child's gender is required",
@@ -546,151 +554,154 @@ var Options = {
 		},
 		streetAddress: {
 			error: "Street address is required",
-			placeholder: "Street Address*"
+			placeholder: "Street Address*",
 		},
 		city: {
 			error: "City is required",
-			placeholder: "City*"
+			placeholder: "City*",
 		},
 		state: {
 			error: "State is required*",
-			placeholder: "State*"
+			placeholder: "State*",
 		},
 		zipCode: {
-			placeholder: "Zip code*"
+			placeholder: "Zip code*",
 		},
 		homePhoneNumber: {
 			error: "A home phone number is required",
-			placeholder: "Home Phone Number*"
+			placeholder: "Home Phone Number*",
 		},
 		cellPhoneNumber: {
-			placeholder: "Cell Phone Number"
+			placeholder: "Cell Phone Number",
 		},
 		homeEmailAddress: {
 			placeholder: "Home Email Address",
 		},
 		age: {
 			error: "Child's age is required",
-      placeholder: "Child's Age*"
+      placeholder: "Child's Age*",
 		},
 		DOB: {
       mode: "date",
-      // placeholder: "Child's Date of Birth*"
 		},
     schoolGrade: {
-      placeholder: "Child's 2016-2017 School Grade"
+      placeholder: "Child's 2016-2017 School Grade",
     },
     schoolName: {
 			error: "Child's school name is required",
-      placeholder: "Child's School Name*"
+      placeholder: "Child's School Name*",
     },
     motherName: {
 			// error: "Child's mother's name is required",
-      placeholder: "Child's Mother's Name"
+      placeholder: "Child's Mother's Name",
     },
     fatherName: {
 			// error: "Child's father's name is required",
-      placeholder: "Child's Father's Name"
+      placeholder: "Child's Father's Name",
     },
     otherGuardianName: {
-      placeholder: "Guardian Name"
+      placeholder: "Guardian Name",
     },
     otherGuardianRelationship: {
-      placeholder: "Guardian Relationship"
+      placeholder: "Guardian Relationship",
     },
     otherGuardianPhoneNumber: {
       placeholder: "Guardian Phone Number",
     },
     emergencyName: {
       error: "Emergency contact name is required.",
-      placeholder: "Emergency Contact Name*"
+      placeholder: "Emergency Contact Name*",
     },
     emergencyPhoneNumber: {
       error: "Emergency contact phone number is required.",
-      placeholder: "Emergency Contact Number*"
+      placeholder: "Emergency Contact Number*",
     },
     allergies:{
-      placeholder: "Allergies or other medical conditions"
+      placeholder: "Allergies or other medical conditions",
     },
     homeChurch:{
-      placeholder: "Home Church"
+      placeholder: "Home Church",
     },
     friendRequest: {
-      placeholder: "Friend requested to be placed with"
+      placeholder: "Friend requested to be placed with",
     },
     isVolunteer: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
     },
     volunteerAgeGroup: {
 			order: 'asc',
 			nullOption: {value: '', text: "Volunteer Age Group"}
     },
     isNurseryRequested: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
     },
     volunteerChildName: {
-      placeholder: "Volunteer Child's Name"
+      placeholder: "Volunteer Child's Name",
     },
     volunteerChildAge: {
-      placeholder: "Volunteer Child's Age"
-    },
-    isAcceptTerms: {
-        label: " "
+      placeholder: "Volunteer Child's Age",
     },
     parentInsuranceCompany: {
       error: "Parent's insurance company required",
-      placeholder: "Parent's Insurance Company*"
+      placeholder: "Parent's Insurance Company*",
     },
     parentInsuranceNumber: {
       error: "Parent's insurance number required",
-      placeholder: "Parent's Insurance Number*"
+      placeholder: "Parent's Insurance Number*",
     },
     parentInsuranceGroup: {
       error: "Parent's insurance group required",
-      placeholder: "Parent's Insurance Group*"
+      placeholder: "Parent's Insurance Group*",
     },
     cdQuantityOrdered: {
-      placeholder: "# of CDs"
+      placeholder: "# of CDs",
     },
     cdCheckAmount: {
       placeholder: "Cost",
       editable: false
     },
     cdCheckNumber: {
-      placeholder: "Check #"
+      placeholder: "Check #",
     },
     tshirtSizeC_XS: {
-      placeholder: "C/XS (2-4)"
+      placeholder: "C/XS (2-4)",
     },
     tshirtSizeC_SM: {
-      placeholder: "C/SM (6-8)"
+      placeholder: "C/SM (6-8)",
     },
     tshirtSizeC_MD: {
-      placeholder: "C/MD (10-12)"
+      placeholder: "C/MD (10-12)",
     },
     tshirtSizeC_LG: {
-      placeholder: "C/LG (14-16)"
+      placeholder: "C/LG (14-16)",
     },
     tshirtSizeY_XL: {
-      placeholder: "Y/XL (18-20)"
+      placeholder: "Y/XL (18-20)",
     },
     tshirtSizeAdult_SM: {
-      placeholder: "Adult SM"
+      placeholder: "Adult SM",
     },
     tshirtSizeAdult_MD: {
-      placeholder: "Adult MD"
+      placeholder: "Adult MD",
     },
     tshirtSizeAdult_LG: {
-      placeholder: "Adult LG"
+      placeholder: "Adult LG",
     },
     tshirtSizeAdult_XL: {
-      placeholder: "Adult XL"
+      placeholder: "Adult XL",
     },
     tshirtSizeAdult_XXL:{
-      placeholder: "Adult XXL"
+      placeholder: "Adult XXL",
     },
     isNewMemberClass: {
-      label: " "
+      label: " ",
+      onTintColor: '#5C3B69'
+    },
+    isAcceptTerms: {
+        label: " ",
+        onTintColor: '#5C3B69'
     }
 	}
 };
@@ -724,8 +735,8 @@ var RegistrationForm = React.createClass({
 var registrationFormStyles = StyleSheet.create({
   button: {
     height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
+    backgroundColor: '#5C3B69',
+    borderColor: '#5C3B69',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
@@ -738,10 +749,8 @@ var registrationFormStyles = StyleSheet.create({
     alignSelf: 'center'
   },
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#C8B8AA'
   }
 });
 
