@@ -2,15 +2,33 @@
 
 'use strict';
 var React = require('react-native');
-var VBSRegistrationForm = require('./VBSRegistrationForm.js');
-var { AppRegistry } = React;
+var WelcomeScreen = require('./welcomeScreen.js')
+// var VBSRegistrationForm = require('./VBSRegistrationForm.js');
+var {
+  AppRegistry,
+  NavigatorIOS,
+  StyleSheet
+} = React;
 
 var QuestCaveVBS = React.createClass({
   render: function() {
       return (
-          <VBSRegistrationForm/>
+        <WelcomeScreen/>
+          // <NavigatorIOS
+          //   style={NavigatorStyles.container}
+          //   initialRoute={{
+          //       title: '',
+          //       component: WelcomeScreen,
+          //   }} />
+          // <VBSRegistrationForm/>
       );
   }
 });
+
+// var NavigatorStyles = StyleSheet.create({
+//   container: {
+//     flex:1
+//   }
+// });
 
 AppRegistry.registerComponent('QuestCaveVBS', () => QuestCaveVBS);
