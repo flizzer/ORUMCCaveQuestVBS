@@ -3,6 +3,7 @@
 'use strict';
 
 var React = require('react-native');
+var VBSRegistrationForm = require('./VBSRegistrationForm.js')
 var {
   Text,
   ScrollView,
@@ -15,7 +16,9 @@ var {
 
 var WelcomeScreen = React.createClass({
   onPress: function() {
-    
+    this.props.navigator.push({
+      component: VBSRegistrationForm,
+    });
   },
   render: function() {
     return (
@@ -46,13 +49,13 @@ var WelcomeScreen = React.createClass({
             Please complete ONE app submission for EACH child regardless of age.
           </Text>
           <Text style={welcomeScreenStyles.sectionHeader3}>
-            By continuing, you understnad your child(ren)'s picture(s) may
+            By continuing, you understand your child(ren)'s picture(s) may
             be placed on the church web site.
           </Text>
         <TouchableHighlight
           style={welcomeScreenStyles.button}
           onPress={this.onPress}
-          underlayColor='#99d9f4'>
+          underlayColor='#B09337'>
             <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
         </TouchableHighlight>
       </ScrollView>
@@ -79,8 +82,6 @@ var welcomeScreenStyles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: '#C8B8AA',
-    // flexDirection: 'row',
-    //alignItems: 'center'
   },
   imgContainer: {
     flexDirection: 'row',
@@ -115,16 +116,6 @@ var welcomeScreenStyles = StyleSheet.create({
     fontSize: 17,
     padding: 5
   },
-  // horizontalInputContainer:{
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // },
-  // flexInput:{
-  //   flex:1,
-  //   padding: 2,
-  //   flexWrap: 'nowrap'
-  // },
 });
 
 module.exports = WelcomeScreen;

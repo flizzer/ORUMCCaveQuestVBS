@@ -731,7 +731,7 @@ var VBSRegistrationForm = React.createClass({
 				<TouchableHighlight
 					style={VBSRegistrationFormStyles.button}
 					onPress={this.onPress}
-					underlayColor='#99d9f4'>
+					underlayColor='#B09337'>
 						<Text style={VBSRegistrationFormStyles.buttonText}>Register</Text>
 				</TouchableHighlight>
 			</ScrollView>
