@@ -9,7 +9,7 @@ var {
   StyleSheet
 } = React;
 
-var QuestCaveVBS = React.createClass({
+var CaveQuestVBS = React.createClass({
   render: function() {
       return (
           <NavigatorIOS
@@ -29,4 +29,4 @@ var NavigatorStyles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('QuestCaveVBS', () => QuestCaveVBS);
+AppRegistry.registerComponent('CaveQuestVBS', () => CaveQuestVBS);
