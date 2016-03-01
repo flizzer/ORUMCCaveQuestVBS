@@ -9,7 +9,7 @@ var {
   StyleSheet
 } = React;
 
-var CaveQuestVBS = React.createClass({
+var ORUMCCaveQuestVBS = React.createClass({
   render: function() {
       return (
           <NavigatorIOS
@@ -29,4 +29,4 @@ var NavigatorStyles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('CaveQuestVBS', () => CaveQuestVBS);
+AppRegistry.registerComponent('ORUMCCaveQuestVBS', () => ORUMCCaveQuestVBS);
