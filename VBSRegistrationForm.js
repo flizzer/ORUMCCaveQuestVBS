@@ -535,7 +535,14 @@ function customFormTemplate(locals)
     );
 }
 
+// function getRegistrationFormTemplate(locals) {
+//   return (
+//       <RegistrationForm/>
+//   );
+// }
+
 var Options = {
+  // template: getRegistrationFormTemplate,
   template: customFormTemplate,
 	auto: 'placeholders',
 	fields: {
@@ -706,7 +713,7 @@ var Options = {
 	}
 };
 
-var RegistrationForm = React.createClass({
+var VBSRegistrationForm = React.createClass({
   onPress: function() {
 		var value = this.refs.form.getValue();
 		if (value) {
@@ -715,24 +722,24 @@ var RegistrationForm = React.createClass({
 	},
 	render: function() {
 	  	return (
-			<ScrollView contentContainerStyle={registrationFormStyles.container}>
+			<ScrollView contentContainerStyle={VBSRegistrationFormStyles.container}>
 				<Form
 					ref="form"
 					type={Child}
 					options={Options}
 				/>
 				<TouchableHighlight
-					style={registrationFormStyles.button}
+					style={VBSRegistrationFormStyles.button}
 					onPress={this.onPress}
-					underlayColor='#99d9f4'>
-						<Text style={registrationFormStyles.buttonText}>Register</Text>
+					underlayColor='#B09337'>
+						<Text style={VBSRegistrationFormStyles.buttonText}>Register</Text>
 				</TouchableHighlight>
 			</ScrollView>
 		);
 	}
 });
 
-var registrationFormStyles = StyleSheet.create({
+var VBSRegistrationFormStyles = StyleSheet.create({
   button: {
     height: 36,
     backgroundColor: '#5C3B69',
@@ -754,4 +761,4 @@ var registrationFormStyles = StyleSheet.create({
   }
 });
 
-module.exports = RegistrationForm;
+module.exports = VBSRegistrationForm;

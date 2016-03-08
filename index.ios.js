@@ -2,15 +2,31 @@
 
 'use strict';
 var React = require('react-native');
-var RegistrationForm = require('./registrationForm.js');
-var { AppRegistry } = React;
+var WelcomeScreen = require('./welcomeScreen.js')
+var {
+  AppRegistry,
+  NavigatorIOS,
+  StyleSheet
+} = React;
 
-var QuestCaveVBS = React.createClass({
+var ORUMCCaveQuestVBS = React.createClass({
   render: function() {
       return (
-          <RegistrationForm/>
+          <NavigatorIOS
+            style={NavigatorStyles.container}
+            initialRoute={{
+                title: '',
+                component: WelcomeScreen,
+            }}
+            navigationBarHidden={true} />
       );
   }
 });
 
-AppRegistry.registerComponent('QuestCaveVBS', () => QuestCaveVBS);
+var NavigatorStyles = StyleSheet.create({
+  container: {
+     flex:1,
+  }
+});
+
+AppRegistry.registerComponent('ORUMCCaveQuestVBS', () => ORUMCCaveQuestVBS);
