@@ -23,35 +23,38 @@ var WelcomeScreen = React.createClass({
   render: function() {
     return (
       <ScrollView
-          style={welcomeScreenStyles.container}>
+        style={welcomeScreenStyles.container}>
+          {/*}<View style={welcomeScreenStyles.horizontalInputContainer}>*/}
           <View style={welcomeScreenStyles.imgContainer}>
-              <Image source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
-                style={welcomeScreenStyles.logo}/>
-          </View>
-          <Text style={welcomeScreenStyles.sectionHeader2}>
-            ORUMC Cave Quest Registration App
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader2}>
-            June 19-24, 2016 6:15 - 8:45pm, SUNDAY - Friday
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader3}>
-            Preschool VBS is for age 3-5 years and Elementary VBS for
-            Kindergarten - 5th grade.
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader3}>
-            Older youth 6th - 10th grade will participate in VBS for Youth
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader3}>
-            A Nursery (0-2 years) is provided for parent volunteers and
-            participants of our adult classes.
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader1}>
-            Please complete ONE app submission for EACH child regardless of age.
-          </Text>
-          <Text style={welcomeScreenStyles.sectionHeader3}>
-            By continuing, you understand your child(ren)'s picture(s) may
-            be placed on the church web site.
-          </Text>
+            <Image
+            source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
+            style={welcomeScreenStyles.logo}/>
+        </View>
+        <Text style={welcomeScreenStyles.welcomeText}>
+          Welcome to the ORUMC Cave Quest Registration App!
+        </Text>
+        <Text style={welcomeScreenStyles.dateText}>
+          June 19-24, 2016 6:15 - 8:45pm, SUNDAY - Friday
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          Preschool VBS is for age 3-5 years and Elementary VBS for
+          Kindergarten - 5th grade.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          Older youth 6th - 10th grade will participate in VBS for Youth.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          A Nursery (0-2 years) is provided for parent volunteers and
+          participants of our adult classes.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader1}>
+          Please complete ONE app submission for EACH child regardless of age.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          By continuing, you understand your child(ren)'s picture(s) may
+          be placed on the church website.
+        </Text>
+        {/*</View>*/}
         <TouchableHighlight
           style={welcomeScreenStyles.button}
           onPress={this.onPress}
@@ -72,7 +75,8 @@ var welcomeScreenStyles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 10
   },
   buttonText: {
     fontSize: 18,
@@ -81,31 +85,39 @@ var welcomeScreenStyles = StyleSheet.create({
   },
   container: {
     padding: 20,
-    backgroundColor: '#C8B8AA',
+    backgroundColor: '#C8B8AA'
   },
   imgContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 50,
-    paddingTop: 30,
+    paddingBottom: 10,
+    //paddingTop: 10,
   },
   logo: {
-    width: 140,
-    height: 130,
+    width: 100,
+    height: 90,
     resizeMode: 'contain',
-    flex: 1
+    //flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sectionHeader1:{
     color: '#000000',
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 15,
     fontStyle: 'italic',
     textDecorationLine: 'underline',
     textAlign: 'center'
   },
-  sectionHeader2:{
-    color: '#000000',
+  welcomeText:{
+    color: '#878B3F',
+    fontWeight: 'bold',
+    fontSize: 14,
+    textAlign: 'center'
+  },
+  dateText:{
+    color: '#FEDC5C',
     fontWeight: 'bold',
     fontSize: 14,
     textAlign: 'center'
@@ -113,9 +125,20 @@ var welcomeScreenStyles = StyleSheet.create({
   sectionHeader3:{
     color: '#000000',
     fontWeight: '500',
-    fontSize: 17,
-    padding: 5
+    fontSize: 10,
+    textAlign: 'center'
+    // padding: 5
   },
+  horizontalInputContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  flexText:{
+    flex:1,
+    padding: 2,
+    flexWrap: 'nowrap'
+  }
 });
 
 module.exports = WelcomeScreen;
