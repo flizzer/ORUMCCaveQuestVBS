@@ -2,12 +2,14 @@
 
 'use strict';
 
-var React = require('react-native');
-var Tcomb = require('tcomb-form-native');
-var _ = require('lodash');
+const React = require('react-native');
+
+const Tcomb = require('tcomb-form-native');
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
+
+const PersistentStorage = require('./persistentStorage.js');
 
 var {
   ScrollView,
@@ -714,12 +716,25 @@ var Options = {
 };
 
 var VBSRegistrationForm = React.createClass({
+
+  // constructor(props) {
+  //   super(props);
+  //   this.databaseItems = this.getDatabaseItems().child('items');
+  // }
+
+  // getDatabaseItems() {
+  //     return new Firebase(FirebaseURL);
+  // }
+
   onPress: function() {
 		var value = this.refs.form.getValue();
-		if (value) {
-			console.log(value);
-		}
+    PersistentStorage.saveChild(this.child);
+		// if (value) {
+		// 	console.log(value);
+		// }
 	},
+
+
 	render: function() {
 	  	return (
 			<ScrollView contentContainerStyle={VBSRegistrationFormStyles.container}>
