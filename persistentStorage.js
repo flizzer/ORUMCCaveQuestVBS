@@ -3,6 +3,7 @@
 'use strict';
 
 const React = require('react-native');
+const Tcomb = require('tcomb-form-native')
 const Firebase = require('firebase');
 const FirebaseURL = 'https://popping-torch-8932.firebaseio.com/';
 
@@ -12,7 +13,7 @@ const FirebaseURL = 'https://popping-torch-8932.firebaseio.com/';
 
 class PersistentStorage extends React.Component {
 
-  constructor(props) {
+  constructor(props: React.PropTypes) {
     super(props);
     this.databaseItems = this.getDatabaseItems().child('items');
   }
@@ -21,7 +22,8 @@ class PersistentStorage extends React.Component {
     return new Firebase(FirebaseURL);
   }
 
-  saveChild(child) {
+  saveChild(child: Tcomb.struct) {
+  // saveChild(child: Tcomb.struct) {
     this.databaseItems.push({firstName: child.firstName});
   }
 }
