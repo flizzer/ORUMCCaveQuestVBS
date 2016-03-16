@@ -92,7 +92,6 @@ var welcomeScreenStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 10,
-    //paddingTop: 10,
   },
   logo: {
     width: 100,
@@ -127,7 +126,6 @@ var welcomeScreenStyles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 10,
     textAlign: 'center'
-    // padding: 5
   },
   horizontalInputContainer:{
     flexDirection: 'row',
