@@ -11,6 +11,7 @@ Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
 
 const CustomFormTemplate = require('./customFormTemplate.js');
 const PersistentStorage = require('./persistentStorage.js');
+var persistentStorage = new PersistentStorage();
 
 var {
   ScrollView,
@@ -53,11 +54,11 @@ SchoolGrade.getValidationErrorMessage = function(value,path,context) {
     return "Child's grade for 2016-2017 school year must be 10th or less"
 };
 
-var VolunteerAgeGroup = Tcomb.enums({
+var VolunteerAgeGroup = Tcomb.maybe(Tcomb.enums({
     E: 'Elementary',
     P: 'Preschool',
     O: 'Other'
-});
+}));
 
 var Child = Tcomb.struct({
 	firstName: Tcomb.String,
@@ -163,7 +164,7 @@ var Options = {
       mode: "date",
 		},
     schoolGrade: {
-      placeholder: "Child's 2016-2017 School Grade",
+      placeholder: "Child's 2016-2017 School Grade*",
     },
     schoolName: {
 			error: "Child's school name is required",
@@ -286,22 +287,12 @@ var Options = {
 
 var VBSRegistrationForm = React.createClass({
 
-  // constructor(props) {
-  //   super(props);
-  //   this.databaseItems = this.getDatabaseItems().child('items');
-  // }
-
-  // getDatabaseItems() {
-  //     return new Firebase(FirebaseURL);
-  // }
-
   onPress: function() {
-		var value = this.refs.form.getValue();
-    var persistentStorage = new PersistentStorage();
-    persistentStorage.saveChild({Child});
-		// if (value) {
-		// 	console.log(value);
-		// }
+		var child = this.refs.form.getValue();
+    // console.log("Got here");
+    console.log(child);
+    if (child != null)
+      persistentStorage.saveChild(child);
 	},
 
 	render: function() {
