@@ -24,7 +24,6 @@ var WelcomeScreen = React.createClass({
     return (
       <ScrollView
         style={welcomeScreenStyles.container}>
-          {/*}<View style={welcomeScreenStyles.horizontalInputContainer}>*/}
           <View style={welcomeScreenStyles.imgContainer}>
             <Image
             source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
@@ -54,7 +53,6 @@ var WelcomeScreen = React.createClass({
           By continuing, you understand your child(ren)'s picture(s) may
           be placed on the church website.
         </Text>
-        {/*</View>*/}
         <TouchableHighlight
           style={welcomeScreenStyles.button}
           onPress={this.onPress}

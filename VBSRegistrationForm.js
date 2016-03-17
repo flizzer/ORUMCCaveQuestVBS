@@ -13,6 +13,8 @@ const CustomFormTemplate = require('./customFormTemplate.js');
 const PersistentStorage = require('./persistentStorage.js');
 var persistentStorage = new PersistentStorage();
 
+const SubmissionCompleteScreen = require('./submissionCompleteScreen.js')
+
 var {
   ScrollView,
   StyleSheet,
@@ -292,6 +294,9 @@ var VBSRegistrationForm = React.createClass({
     console.log(child);
     if (child != null)
       persistentStorage.saveChild(child);
+    this.props.navigator.push({
+      component: SubmissionCompleteScreen
+    });
 	},
 
 	render: function() {
