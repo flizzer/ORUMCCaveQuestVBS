@@ -289,7 +289,6 @@ var VBSRegistrationForm = React.createClass({
 
   onPress: function() {
 		var child = this.refs.form.getValue();
-    // console.log("Got here");
     console.log(child);
     if (child != null)
       persistentStorage.saveChild(child);
