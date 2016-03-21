@@ -292,12 +292,13 @@ var VBSRegistrationForm = React.createClass({
   onPress: function() {
 		var child = this.refs.form.getValue();
     console.log(child);
-    if (child != null)
+    if (child != null) {
       persistentStorage.saveChild(child);
-    this.props.navigator.push({
-      component: SubmissionCompleteScreen
-    });
-	},
+      this.props.navigator.push({
+        component: SubmissionCompleteScreen
+      });
+    }
+  },
 
 	render: function() {
 	  	return (
