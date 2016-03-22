@@ -11,12 +11,9 @@ var {
   TouchableHighlight
 } = React;
 
-var VBSRegistrationForm = require('./VBSRegistrationForm.js');
-
 var SubmissionCompleteScreen = React.createClass({
   onPress: function() {
-    this.props.navigator.push({
-      component: VBSRegistrationForm,
+    this.props.navigator.popToTop({
     });
   },
   render: function() {
