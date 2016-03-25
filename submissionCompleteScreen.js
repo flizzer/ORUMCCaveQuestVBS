@@ -29,7 +29,7 @@ var SubmissionCompleteScreen = React.createClass({
           Submission Complete!
         </Text>
         <Text style={submissionCompleteStyles.submissionCompleteText}>
-          You should receive an email at  shortly.
+          You should receive an email at {this.props.emailAddress} shortly.
         </Text>
         <TouchableHighlight
           style={submissionCompleteStyles.button}

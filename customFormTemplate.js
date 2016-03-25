@@ -209,16 +209,18 @@ class CustomFormTemplate extends React.Component {
           </Text>
         </View>
         <View style={customFormStyles.border}>
+          <View style={customFormStyles.flexInput}>
+            {locals.inputs.emailAddress}
+          </View>
           <View style={customFormStyles.horizontalInputContainer}>
             <View style={customFormStyles.flexInput}>
               {locals.inputs.cellPhoneNumber}
             </View>
-            <View style={customFormStyles.flexInput}>
-              {locals.inputs.homeEmailAddress}
-            </View>
           </View>
           <Text style={customFormStyles.helpText}>
-            Please enter either a cell phone number OR an email address for updates regarding VBS week.
+            Please enter a valid email address.  A confirmation email will be sent once your child has been registered.
+            This email address will also be used for updates regarding VBS week.
+            If you'd rather receive updates via cell phone, please provide a valid number.
           </Text>
         </View>
         <View style={customFormStyles.border}>

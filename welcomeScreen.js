@@ -3,7 +3,7 @@
 'use strict';
 
 var React = require('react-native');
-var VBSRegistrationForm = require('./VBSRegistrationForm.js')
+var VBSRegistrationForm = require('./VBSRegistrationForm.js');
 var {
   Text,
   ScrollView,

@@ -29,7 +29,7 @@ class PersistentStorage extends React.Component {
       zipCode: child.zipCode,
       homePhoneNumber: child.homePhoneNumber,
       cellPhoneNumber: child.cellPhoneNumber,
-      homeEmailAddress: child.homeEmailAddress,
+      emailAddress: child.emailAddress,
       age: child.age,
       DOB: child.DOB,
       schoolGrade: child.schoolGrade,
