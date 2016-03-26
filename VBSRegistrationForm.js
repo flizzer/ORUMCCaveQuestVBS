@@ -13,6 +13,8 @@ const CustomFormTemplate = require('./customFormTemplate.js');
 const PersistentStorage = require('./persistentStorage.js');
 var persistentStorage = new PersistentStorage();
 const SubmissionCompleteScreen = require('./submissionCompleteScreen.js');
+const Mailer = require('./mailer.js');
+var mailer = new Mailer();
 
 var {
   ScrollView,
@@ -20,7 +22,8 @@ var {
   Text,
   TouchableHighlight,
   View,
-  Image
+  Image,
+  Alert
 } = React;
 var Form = Tcomb.form.Form;
 var Gender = Tcomb.enums({
@@ -295,6 +298,7 @@ var VBSRegistrationForm = React.createClass({
     console.log(child);
     if (child != null) {
       persistentStorage.saveChild(child);
+      mailer.mail(child);
       this.props.navigator.push({
         component: SubmissionCompleteScreen,
         passProps: {
