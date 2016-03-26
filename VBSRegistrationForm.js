@@ -12,6 +12,7 @@ Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
 const CustomFormTemplate = require('./customFormTemplate.js');
 const PersistentStorage = require('./persistentStorage.js');
 var persistentStorage = new PersistentStorage();
+const SubmissionCompleteScreen = require('./submissionCompleteScreen.js');
 
 var {
   ScrollView,
@@ -70,7 +71,7 @@ var Child = Tcomb.struct({
 	zipCode: ZipCode,
 	homePhoneNumber: Tcomb.String,
 	cellPhoneNumber: Tcomb.maybe(Tcomb.String),
-	homeEmailAddress: Tcomb.maybe(Tcomb.String),
+	emailAddress: Tcomb.String,
 	age: Age,
   DOB: Tcomb.Date,
   schoolGrade: SchoolGrade,
@@ -153,8 +154,10 @@ var Options = {
 		cellPhoneNumber: {
 			placeholder: "Cell Phone Number",
 		},
-		homeEmailAddress: {
-			placeholder: "Home Email Address",
+		emailAddress: {
+			error: "An email address is required",
+			placeholder: "Email Address*",
+      autoCapitalize: false
 		},
 		age: {
 			error: "Child's age is required",
@@ -289,11 +292,17 @@ var VBSRegistrationForm = React.createClass({
 
   onPress: function() {
 		var child = this.refs.form.getValue();
-    // console.log("Got here");
     console.log(child);
-    if (child != null)
+    if (child != null) {
       persistentStorage.saveChild(child);
-	},
+      this.props.navigator.push({
+        component: SubmissionCompleteScreen,
+        passProps: {
+          emailAddress: child.emailAddress
+        }
+      });
+    }
+  },
 
 	render: function() {
 	  	return (
