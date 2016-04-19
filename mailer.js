@@ -6,24 +6,29 @@ const React = require('react-native');
 var {
   Alert
 } = React;
-const RNMail = require('NativeModules').RNMail;
+
 const Tcomb = require('tcomb-form-native');
-const EmailTemplate = require('./emailTemplate.js')
-var emailTemplate = new EmailTemplate();
+var url = 'https://microsoft-apiapp04962ba69aa74a76af6ae027d5493b6d.azurewebsites.net/api/SendGrid?destEmailAddress={0}&childName={1}';
 
 class Mailer extends React.Component {
 
-  mail(child : Tcomb.struct) {
-    var childFullName = child.firstName + ' ' + child.lastName;
-    RNMail.mail({
-      subject: 'CaveQuest VBS Registration for ' + childFullName,
-      recipients: [child.emailAddress],
-      body: 'This is a test from the app.'
-      // body: emailTemplate.getEmailTemplate(child)
-    }, (error, event) => {
-      if (error)
-      Alert.alert('Email Error', 'Could not send email notification.');
-    });
+    async sendMail(child : Tcomb.struct) {
+      var childFullName = child.firstName + ' ' + child.lastName;
+      url = url.replace('{0}', child.emailAddress);
+      url = url.replace('{1}', childFullName);
+      url = encodeURI(url);
+      try {
+        fetch(url
+        , {
+           method: 'POST',
+           headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+           }
+        });
+      } catch (error) {
+         throw error;
+      }
   }
 }
 

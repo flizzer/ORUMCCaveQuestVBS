@@ -19,6 +19,7 @@ class PersistentStorage extends React.Component {
   }
 
   saveChild(child : Tcomb.struct) {
+    var timeSubmitted = Firebase.ServerValue.TIMESTAMP;
     this.databaseItems.push({
       firstName: child.firstName,
       lastName: child.lastName,
@@ -65,7 +66,8 @@ class PersistentStorage extends React.Component {
       tshirtSizeAdult_XL: child.tshirtSizeAdult_XL,
       tshirtSizeAdult_XXL: child.tshirtSizeAdult_XXL,
       isNewMemberClass: child.isNewMemberClass,
-      isAcceptTerms: child.isAcceptTerms
+      isAcceptTerms: child.isAcceptTerms,
+      timeSubmitted: timeSubmitted
     });
   }
 }

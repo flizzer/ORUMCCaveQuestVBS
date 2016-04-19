@@ -160,134 +160,134 @@ var Options = {
 		emailAddress: {
 			error: "An email address is required",
 			placeholder: "Email Address*",
-      autoCapitalize: false
+            autoCapitalize: false
 		},
 		age: {
 			error: "Child's age is required",
-      placeholder: "Child's Age*",
+            placeholder: "Child's Age*",
 		},
 		DOB: {
-      mode: "date",
+            mode: "date",
 		},
-    schoolGrade: {
-      placeholder: "Child's 2016-2017 School Grade*",
-    },
-    schoolName: {
-			error: "Child's school name is required",
-      placeholder: "Child's School Name*",
-    },
-    motherName: {
-			// error: "Child's mother's name is required",
-      placeholder: "Child's Mother's Name",
-    },
-    fatherName: {
-			// error: "Child's father's name is required",
-      placeholder: "Child's Father's Name",
-    },
-    otherGuardianName: {
-      placeholder: "Guardian Name",
-    },
-    otherGuardianRelationship: {
-      placeholder: "Guardian Relationship",
-    },
-    otherGuardianPhoneNumber: {
-      placeholder: "Guardian Phone Number",
-    },
-    emergencyName: {
-      error: "Emergency contact name is required.",
-      placeholder: "Emergency Contact Name*",
-    },
-    emergencyPhoneNumber: {
-      error: "Emergency contact phone number is required.",
-      placeholder: "Emergency Contact Number*",
-    },
-    allergies:{
-      placeholder: "Allergies or other medical conditions",
-    },
-    homeChurch:{
-      placeholder: "Home Church",
-    },
-    friendRequest: {
-      placeholder: "Friend requested to be placed with",
-    },
-    isVolunteer: {
-      label: " ",
-      onTintColor: '#5C3B69'
-    },
-    volunteerAgeGroup: {
-			order: 'asc',
-			nullOption: {value: '', text: "Volunteer Age Group"}
-    },
-    isNurseryRequested: {
-      label: " ",
-      onTintColor: '#5C3B69'
-    },
-    volunteerChildName: {
-      placeholder: "Volunteer Child's Name",
-    },
-    volunteerChildAge: {
-      placeholder: "Volunteer Child's Age",
-    },
-    parentInsuranceCompany: {
-      error: "Parent's insurance company required",
-      placeholder: "Parent's Insurance Company*",
-    },
-    parentInsuranceNumber: {
-      error: "Parent's insurance number required",
-      placeholder: "Parent's Insurance Number*",
-    },
-    parentInsuranceGroup: {
-      error: "Parent's insurance group required",
-      placeholder: "Parent's Insurance Group*",
-    },
-    cdQuantityOrdered: {
-      placeholder: "# of CDs",
-    },
-    cdCheckAmount: {
-      placeholder: "Cost",
-      editable: false
-    },
-    cdCheckNumber: {
-      placeholder: "Check #",
-    },
-    tshirtSizeC_XS: {
-      placeholder: "C/XS (2-4)",
-    },
-    tshirtSizeC_SM: {
-      placeholder: "C/SM (6-8)",
-    },
-    tshirtSizeC_MD: {
-      placeholder: "C/MD (10-12)",
-    },
-    tshirtSizeC_LG: {
-      placeholder: "C/LG (14-16)",
-    },
-    tshirtSizeY_XL: {
-      placeholder: "Y/XL (18-20)",
-    },
-    tshirtSizeAdult_SM: {
-      placeholder: "Adult SM",
-    },
-    tshirtSizeAdult_MD: {
-      placeholder: "Adult MD",
-    },
-    tshirtSizeAdult_LG: {
-      placeholder: "Adult LG",
-    },
-    tshirtSizeAdult_XL: {
-      placeholder: "Adult XL",
-    },
-    tshirtSizeAdult_XXL:{
-      placeholder: "Adult XXL",
-    },
-    isNewMemberClass: {
-      label: " ",
-      onTintColor: '#5C3B69'
-    },
-    isAcceptTerms: {
-        label: " ",
-        onTintColor: '#5C3B69'
-    }
+        schoolGrade: {
+            placeholder: "Child's 2016-2017 School Grade*",
+        },
+        schoolName: {
+	        error: "Child's school name is required",
+            placeholder: "Child's School Name*",
+        },
+        motherName: {
+            // error: "Child's mother's name is required",
+            placeholder: "Child's Mother's Name",
+        },
+        fatherName: {
+	        // error: "Child's father's name is required",
+            placeholder: "Child's Father's Name",
+        },
+        otherGuardianName: {
+            placeholder: "Guardian Name",
+        },
+        otherGuardianRelationship: {
+            placeholder: "Guardian Relationship",
+        },
+        otherGuardianPhoneNumber: {
+            placeholder: "Guardian Phone Number",
+        },
+        emergencyName: {
+            error: "Emergency contact name is required.",
+            placeholder: "Emergency Contact Name*",
+        },
+        emergencyPhoneNumber: {
+            error: "Emergency contact phone number is required.",
+            placeholder: "Emergency Contact Number*",
+        },
+        allergies:{
+            placeholder: "Allergies or other medical conditions",
+        },
+        homeChurch:{
+            placeholder: "Home Church",
+        },
+        friendRequest: {
+            placeholder: "Friend requested to be placed with",
+        },
+        isVolunteer: {
+            label: " ",
+            onTintColor: '#5C3B69'
+        },
+        volunteerAgeGroup: {
+            order: 'asc',
+            nullOption: { value: '', text: "Volunteer Age Group" }
+        },
+        isNurseryRequested: {
+            label: " ",
+            onTintColor: '#5C3B69'
+        },
+        volunteerChildName: {
+            placeholder: "Volunteer Child's Name",
+        },
+        volunteerChildAge: {
+            placeholder: "Volunteer Child's Age",
+        },
+        parentInsuranceCompany: {
+            error: "Parent's insurance company required",
+            placeholder: "Parent's Insurance Company*",
+        },
+        parentInsuranceNumber: {
+            error: "Parent's insurance number required",
+            placeholder: "Parent's Insurance Number*",
+        },
+        parentInsuranceGroup: {
+            error: "Parent's insurance group required",
+            placeholder: "Parent's Insurance Group*",
+        },
+        cdQuantityOrdered: {
+            placeholder: "# of CDs",
+        },
+        cdCheckAmount: {
+            placeholder: "Cost",
+            editable: false
+        },
+        cdCheckNumber: {
+            placeholder: "Check #",
+        },
+        tshirtSizeC_XS: {
+            placeholder: "C/XS (2-4)",
+        },
+        tshirtSizeC_SM: {
+            placeholder: "C/SM (6-8)",
+        },
+        tshirtSizeC_MD: {
+            placeholder: "C/MD (10-12)",
+        },
+        tshirtSizeC_LG: {
+            placeholder: "C/LG (14-16)",
+        },
+        tshirtSizeY_XL: {
+            placeholder: "Y/XL (18-20)",
+        },
+        tshirtSizeAdult_SM: {
+            placeholder: "Adult SM",
+        },
+        tshirtSizeAdult_MD: {
+            placeholder: "Adult MD",
+        },
+        tshirtSizeAdult_LG: {
+            placeholder: "Adult LG",
+        },
+        tshirtSizeAdult_XL: {
+            placeholder: "Adult XL",
+        },
+        tshirtSizeAdult_XXL: {
+            placeholder: "Adult XXL",
+        },
+        isNewMemberClass: {
+            label: " ",
+            onTintColor: '#5C3B69'
+        },
+        isAcceptTerms: {
+            label: " ",
+            onTintColor: '#5C3B69'
+        }
 	}
 };
 
@@ -298,7 +298,7 @@ var VBSRegistrationForm = React.createClass({
     console.log(child);
     if (child != null) {
       persistentStorage.saveChild(child);
-      mailer.mail(child);
+      mailer.sendMail(child);
       this.props.navigator.push({
         component: SubmissionCompleteScreen,
         passProps: {
