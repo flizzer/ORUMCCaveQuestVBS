@@ -148,7 +148,7 @@ class CustomFormTemplate extends React.Component {
       <View>
         <View style={customFormStyles.imgContainer}>
           <Image
-            source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
+            source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
             style={customFormStyles.logo}/>
         </View>
         <View style={customFormStyles.border}>

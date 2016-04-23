@@ -26,7 +26,7 @@ var WelcomeScreen = React.createClass({
         style={welcomeScreenStyles.container}>
           <View style={welcomeScreenStyles.imgContainer}>
             <Image
-            source={require('./img/cave-quest-vbs-logo-HiRes-RGB.png')}
+            source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
             style={welcomeScreenStyles.logo}/>
         </View>
         <Text style={welcomeScreenStyles.welcomeText}>
