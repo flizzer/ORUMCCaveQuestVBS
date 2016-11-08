@@ -2,17 +2,45 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {
   Text
   , ScrollView
   , Image
-  ,  StyleSheet
+  , StyleSheet
   , TouchableHighlight
   , View
 } from 'react-native';
+const VBSRegistrationForm = require('./VBSRegistrationForm.js');
 
 class WelcomeScreen extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    navigator: PropTypes.object.isRequired,
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    this._onForward = this._onForward.bind(this);
+    this._onBack = this._onBack.bind(this);
+  }
+
+  _onForward() {
+    this.props.navigator.push({
+      component: VBSRegistrationForm
+    });
+  }
+
+  _onBack() {
+    // this.props.navigator.push({
+    //   component: VBSRegistrationForm
+    // });
+  }
+  // onPress() {
+  //   this.props.navigator.push({
+  //     component: VBSRegistrationForm,
+  //   });
+  // }
   render() {
     return (
       <ScrollView
@@ -48,7 +76,7 @@ class WelcomeScreen extends Component {
         </Text>
         <TouchableHighlight
           style={welcomeScreenStyles.button}
-          onPress={this.onPress}
+          onPress={this._onForward}
           underlayColor='#B09337'>
             <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
         </TouchableHighlight>
