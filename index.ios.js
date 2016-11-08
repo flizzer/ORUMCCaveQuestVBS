@@ -1,17 +1,27 @@
 /* @flow */
 
 'use strict';
-var React = require('react-native');
-var WelcomeScreen = require('./welcomeScreen.js')
-var {
+import React, {Component} from 'react';
+import {AppRegistry, Text, NavigatorIOS, StyleSheet} from 'react-native';
+const WelcomeScreen = require('./welcomeScreen.js');
+/*class ORUMCCaveQuestVBS extends Component{
+  render() {
+    return (
+        <Text>Hello World!</Text>
+    )
+  }
+}*/
+//var WelcomeScreen = require('./welcomeScreen.js')
+/*var {
   AppRegistry,
   NavigatorIOS,
   StyleSheet
-} = React;
+} = React;*/
 
-var ORUMCCaveQuestVBS = React.createClass({
-  render: function() {
+class ORUMCCaveQuestVBS extends Component {
+  render() {
       return (
+        // <Text>Hello World!!!</Text>
           <NavigatorIOS
             style={NavigatorStyles.container}
             initialRoute={{
@@ -19,9 +29,9 @@ var ORUMCCaveQuestVBS = React.createClass({
                 component: WelcomeScreen,
             }}
             navigationBarHidden={true} />
-      );
+      )
   }
-});
+}
 
 var NavigatorStyles = StyleSheet.create({
   container: {

@@ -2,7 +2,7 @@
 
 'use strict';
 
-const React = require('react-native');
+const React = require('react');
 const Tcomb = require('tcomb-form-native');
 const Firebase = require('firebase');
 const FirebaseURL = 'https://popping-torch-8932.firebaseio.com/';

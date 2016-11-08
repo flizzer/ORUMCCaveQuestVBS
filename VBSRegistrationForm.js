@@ -2,9 +2,13 @@
 
 'use strict';
 
-const React = require('react-native');
+import React from 'react';
+import {
+  Text, ScrollView, Image, Component, StyleSheet, TouchableHighlight, View
+} from 'react-native';
+import Tcomb from 'tcomb-form-native';
 
-const Tcomb = require('tcomb-form-native');
+// const Tcomb = require('tcomb-form-native');
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
@@ -16,15 +20,15 @@ const SubmissionCompleteScreen = require('./submissionCompleteScreen.js');
 const Mailer = require('./mailer.js');
 var mailer = new Mailer();
 
-var {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-  Image,
-  Alert
-} = React;
+// var {
+//   ScrollView,
+//   StyleSheet,
+//   Text,
+//   TouchableHighlight,
+//   View,
+//   Image,
+//   Alert
+// } = React;
 var Form = Tcomb.form.Form;
 var Gender = Tcomb.enums({
 		M: 'Male',
