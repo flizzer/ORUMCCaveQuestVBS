@@ -3,119 +3,59 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Text, ScrollView, Image,  StyleSheet, TouchableHighlight, View} from 'react-native';
-// const VBSRegistrationForm = require('./VBSRegistrationForm.js');
-// var {
-//   Text,
-//   ScrollView,
-//   Image,
-//   Component,
-//   StyleSheet,
-//   TouchableHighlight,
-//   View
-// } = React;
+import {
+  Text
+  , ScrollView
+  , Image
+  ,  StyleSheet
+  , TouchableHighlight
+  , View
+} from 'react-native';
 
 class WelcomeScreen extends Component {
   render() {
     return (
-      <View style={welcomeScreenStyles.imgContainer}>
-            <Text>Some Other Hello World</Text>
+      <ScrollView
+        style={welcomeScreenStyles.container}>
+          <View style={welcomeScreenStyles.imgContainer}>
             <Image
             source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
             style={welcomeScreenStyles.logo}/>
-      </View>
-
-      // <ScrollView
-      //   style={welcomeScreenStyles.container}>
-      //     <View style={welcomeScreenStyles.imgContainer}>
-      //       <Image
-      //       source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
-      //       style={welcomeScreenStyles.logo}/>
-      //   </View>
-      //   <Text style={welcomeScreenStyles.welcomeText}>
-      //     Welcome to the ORUMC Cave Quest Registration App!
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.dateText}>
-      //     June 19-24, 2016 6:15 - 8:45pm, SUNDAY - Friday
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.sectionHeader3}>
-      //     Preschool VBS is for age 3-5 years and Elementary VBS for
-      //     Kindergarten - 5th grade.
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.sectionHeader3}>
-      //     Older youth 6th - 10th grade will participate in VBS for Youth.
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.sectionHeader3}>
-      //     A Nursery (0-2 years) is provided for parent volunteers and
-      //     participants of our adult classes.
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.sectionHeader1}>
-      //     Please complete ONE app submission for EACH child regardless of age.
-      //   </Text>
-      //   <Text style={welcomeScreenStyles.sectionHeader3}>
-      //     By continuing, you understand your child(ren)'s picture(s) may
-      //     be placed on the church website.
-      //   </Text>
-      //   <TouchableHighlight
-      //     style={welcomeScreenStyles.button}
-      //     onPress={this.onPress}
-      //     underlayColor='#B09337'>
-      //       <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
-      //   </TouchableHighlight>
-      // </ScrollView>
+        </View>
+        <Text style={welcomeScreenStyles.welcomeText}>
+          Welcome to the ORUMC Cave Quest Registration App!
+        </Text>
+        <Text style={welcomeScreenStyles.dateText}>
+          June 19-24, 2016 6:15 - 8:45pm, SUNDAY - Friday
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          Preschool VBS is for age 3-5 years and Elementary VBS for
+          Kindergarten - 5th grade.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          Older youth 6th - 10th grade will participate in VBS for Youth.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          A Nursery (0-2 years) is provided for parent volunteers and
+          participants of our adult classes.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader1}>
+          Please complete ONE app submission for EACH child regardless of age.
+        </Text>
+        <Text style={welcomeScreenStyles.sectionHeader3}>
+          By continuing, you understand your child(ren)'s picture(s) may
+          be placed on the church website.
+        </Text>
+        <TouchableHighlight
+          style={welcomeScreenStyles.button}
+          onPress={this.onPress}
+          underlayColor='#B09337'>
+            <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
+        </TouchableHighlight>
+      </ScrollView>
     )
   }
 }
-
-// var WelcomeScreen = React.createClass({
-//   onPress: function() {
-//     this.props.navigator.push({
-//       component: VBSRegistrationForm,
-//     });
-//   },
-//   render: function() {
-//     return (
-//       <ScrollView
-//         style={welcomeScreenStyles.container}>
-//           <View style={welcomeScreenStyles.imgContainer}>
-//             <Image
-//             source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
-//             style={welcomeScreenStyles.logo}/>
-//         </View>
-//         <Text style={welcomeScreenStyles.welcomeText}>
-//           Welcome to the ORUMC Cave Quest Registration App!
-//         </Text>
-//         <Text style={welcomeScreenStyles.dateText}>
-//           June 19-24, 2016 6:15 - 8:45pm, SUNDAY - Friday
-//         </Text>
-//         <Text style={welcomeScreenStyles.sectionHeader3}>
-//           Preschool VBS is for age 3-5 years and Elementary VBS for
-//           Kindergarten - 5th grade.
-//         </Text>
-//         <Text style={welcomeScreenStyles.sectionHeader3}>
-//           Older youth 6th - 10th grade will participate in VBS for Youth.
-//         </Text>
-//         <Text style={welcomeScreenStyles.sectionHeader3}>
-//           A Nursery (0-2 years) is provided for parent volunteers and
-//           participants of our adult classes.
-//         </Text>
-//         <Text style={welcomeScreenStyles.sectionHeader1}>
-//           Please complete ONE app submission for EACH child regardless of age.
-//         </Text>
-//         <Text style={welcomeScreenStyles.sectionHeader3}>
-//           By continuing, you understand your child(ren)'s picture(s) may
-//           be placed on the church website.
-//         </Text>
-//         <TouchableHighlight
-//           style={welcomeScreenStyles.button}
-//           onPress={this.onPress}
-//           underlayColor='#B09337'>
-//             <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
-//         </TouchableHighlight>
-//       </ScrollView>
-//     );
-//   }
-// });
 
 var welcomeScreenStyles = StyleSheet.create({
   button: {
