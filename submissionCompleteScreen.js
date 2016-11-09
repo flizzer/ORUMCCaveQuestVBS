@@ -1,15 +1,15 @@
 /* @flow */
 
 'use strict';
-var React = require('react');
-var {
+import React from 'react';
+import {
   ScrollView,
   Text,
   StyleSheet,
   View,
   Image,
   TouchableHighlight
-} = React;
+} from 'react-native';
 
 var SubmissionCompleteScreen = React.createClass({
   onPress: function() {

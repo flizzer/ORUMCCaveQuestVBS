@@ -16,7 +16,7 @@ class ORUMCCaveQuestVBS extends Component {
           <NavigatorIOS
             style={NavigatorStyles.container}
             initialRoute={{
-                title: '',
+                title: 'Welcome Screen',
                 component: WelcomeScreen,
             }}
             navigationBarHidden={true} />

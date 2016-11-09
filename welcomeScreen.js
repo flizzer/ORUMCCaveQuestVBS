@@ -23,11 +23,13 @@ class WelcomeScreen extends Component {
     super(props, context);
     this._onForward = this._onForward.bind(this);
     this._onBack = this._onBack.bind(this);
+    // this.title = this.props.title;
   }
 
   _onForward() {
     this.props.navigator.push({
-      component: VBSRegistrationForm
+      component: VBSRegistrationForm,
+      title: 'VBS Registration Form'
     });
   }
 
