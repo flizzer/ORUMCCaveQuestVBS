@@ -2,17 +2,16 @@
 
 'use strict';
 
-const React = require('react');
-const Tcomb = require('tcomb-form-native');
-
-var {
+import React from 'react';
+import {
   ScrollView,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
   Image
-} = React;
+} from 'react-native';
+const Tcomb = require('tcomb-form-native');
 
 class CustomFormTemplate extends React.Component {
   constructor(locals: Tcomb.object, props: React.PropTypes) {
