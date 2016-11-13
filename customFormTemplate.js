@@ -142,7 +142,28 @@ class CustomFormTemplate extends React.Component {
         paddingBottom: 50,
         paddingTop: 30,
       }
-    });
+     });
+
+  //    return (
+  //     <View>
+  //       <View style={customFormStyles.imgContainer}>
+  //          <Image
+  //          source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
+  //          style={customFormStyles.logo}/>
+  //       </View>
+  //       <View style={customFormStyles.border}>
+  //         <View style={customFormStyles.horizontalInputContainer}>
+  //           <View style={customFormStyles.flexInput}>
+  //             {locals.inputs.firstName}
+  //           </View>
+  //           <View style={customFormStyles.flexInput}>
+  //             {locals.inputs.lastName}
+  //           </View>
+  //         </View>
+  //       </View>
+  //     </View>
+  //  );
+
     return (
       <View>
         <View style={customFormStyles.imgContainer}>

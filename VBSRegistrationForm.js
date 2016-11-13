@@ -11,7 +11,6 @@ import {
   , TouchableHighlight
   , View
 } from 'react-native';
-// import {Tcomb} from 'tcomb-form-native';
 
 const Tcomb = require('tcomb-form-native');
 const Component = Tcomb.form.Component;
@@ -26,109 +25,98 @@ const SubmissionCompleteScreen = require('./submissionCompleteScreen.js');
 const Mailer = require('./mailer.js');
 var mailer = new Mailer();
 
-// var {
-//   ScrollView,
-//   StyleSheet,
-//   Text,
-//   TouchableHighlight,
-//   View,
-//   Image,
-//   Alert
-// } = React;
 var Form = Tcomb.form.Form;
-// var Gender = Tcomb.enums({
-// 		M: 'Male',
-// 		F: 'Female'
-// });
-//
-// var ZipCode = Tcomb.refinement(Tcomb.Number,
-//   function(n) {
-//     return (n > 0 && n.toString().length == 5);
-//   }
-// );
-// ZipCode.getValidationErrorMessage = function(value,path,context) {
-// 	return 'A zip code is required';
-// };
-//
-// var Age = Tcomb.refinement(Tcomb.Number,
-//   function(n) {
-//     return (n >= 3);
-//   }
-// );
-// Age.getValidationErrorMessage = function(value,path,context) {
-//   return 'Child must be 3 years of age or older';
-// };
-//
-// var SchoolGrade = Tcomb.refinement(Tcomb.Number,
-//   function(n) {
-//       return (n <= 10);
-//   }
-// );
-// SchoolGrade.getValidationErrorMessage = function(value,path,context) {
-//     return "Child's grade for 2016-2017 school year must be 10th or less"
-// };
-//
-// var VolunteerAgeGroup = Tcomb.maybe(Tcomb.enums({
-//     E: 'Elementary',
-//     P: 'Preschool',
-//     O: 'Other'
-// }));
-//
+var Gender = Tcomb.enums({
+		M: 'Male',
+		F: 'Female'
+});
+
+var ZipCode = Tcomb.refinement(Tcomb.Number,
+  function(n) {
+    return (n > 0 && n.toString().length == 5);
+  }
+);
+ZipCode.getValidationErrorMessage = function(value,path,context) {
+	return 'A zip code is required';
+};
+
+var Age = Tcomb.refinement(Tcomb.Number,
+  function(n) {
+    return (n >= 3);
+  }
+);
+Age.getValidationErrorMessage = function(value,path,context) {
+  return 'Child must be 3 years of age or older';
+};
+
+var SchoolGrade = Tcomb.refinement(Tcomb.Number,
+  function(n) {
+      return (n <= 10);
+  }
+);
+SchoolGrade.getValidationErrorMessage = function(value,path,context) {
+    return "Child's grade for 2016-2017 school year must be 10th or less"
+};
+
+var VolunteerAgeGroup = Tcomb.maybe(Tcomb.enums({
+    E: 'Elementary',
+    P: 'Preschool',
+    O: 'Other'
+}));
+
 var Child = Tcomb.struct({
     firstName: Tcomb.String,
-//     lastName: Tcomb.String,
-//     gender: Gender,
-//     streetAddress: Tcomb.String,
-//     city: Tcomb.String,
-//     state: Tcomb.String,
-//     zipCode: ZipCode,
-//     homePhoneNumber: Tcomb.String,
-//     cellPhoneNumber: Tcomb.maybe(Tcomb.String),
-//     emailAddress: Tcomb.String,
-//     age: Age,
-//     DOB: Tcomb.Date,
-//     schoolGrade: SchoolGrade,
-//     schoolName: Tcomb.maybe(Tcomb.String),
-//     motherName: Tcomb.String,
-//     fatherName: Tcomb.String,
-//     otherGuardianName: Tcomb.maybe(Tcomb.String),
-//     otherGuardianRelationship: Tcomb.maybe(Tcomb.String),
-//     otherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
-//     emergencyName: Tcomb.String,
-//     emergencyPhoneNumber: Tcomb.String,
-//     allergies: Tcomb.maybe(Tcomb.String),
-//     homeChurch: Tcomb.maybe(Tcomb.String),
-//     friendRequest: Tcomb.maybe(Tcomb.String),
-//     isVolunteer: Tcomb.Boolean,
-//     volunteerAgeGroup: VolunteerAgeGroup,
-//     isNurseryRequested: Tcomb.Boolean,
-//     volunteerChildName: Tcomb.maybe(Tcomb.String),
-//     volunteerChildAge: Tcomb.maybe(Tcomb.Number),
-//     parentInsuranceCompany: Tcomb.String,
-//     parentInsuranceNumber: Tcomb.String,
-//     parentInsuranceGroup: Tcomb.String,
-//     cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
-//     cdCheckAmount: Tcomb.maybe(Tcomb.Number),
-//     cdCheckNumber: Tcomb.maybe(Tcomb.String),
-//     tshirtSizeC_XS: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeC_SM: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeC_MD: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeC_LG: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeY_XL: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeAdult_SM: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeAdult_MD: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeAdult_LG: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
-//     tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
-//     isNewMemberClass: Tcomb.Boolean,
-//     isAcceptTerms: Tcomb.Boolean,
+    lastName: Tcomb.String,
+    gender: Gender,
+    streetAddress: Tcomb.String,
+    city: Tcomb.String,
+    state: Tcomb.String,
+    zipCode: ZipCode,
+    homePhoneNumber: Tcomb.String,
+    cellPhoneNumber: Tcomb.maybe(Tcomb.String),
+    emailAddress: Tcomb.String,
+    age: Age,
+    DOB: Tcomb.Date,
+    schoolGrade: SchoolGrade,
+    schoolName: Tcomb.maybe(Tcomb.String),
+    motherName: Tcomb.String,
+    fatherName: Tcomb.String,
+    otherGuardianName: Tcomb.maybe(Tcomb.String),
+    otherGuardianRelationship: Tcomb.maybe(Tcomb.String),
+    otherGuardianPhoneNumber: Tcomb.maybe(Tcomb.String),
+    emergencyName: Tcomb.String,
+    emergencyPhoneNumber: Tcomb.String,
+    allergies: Tcomb.maybe(Tcomb.String),
+    homeChurch: Tcomb.maybe(Tcomb.String),
+    friendRequest: Tcomb.maybe(Tcomb.String),
+    isVolunteer: Tcomb.Boolean,
+    volunteerAgeGroup: VolunteerAgeGroup,
+    isNurseryRequested: Tcomb.Boolean,
+    volunteerChildName: Tcomb.maybe(Tcomb.String),
+    volunteerChildAge: Tcomb.maybe(Tcomb.Number),
+    parentInsuranceCompany: Tcomb.String,
+    parentInsuranceNumber: Tcomb.String,
+    parentInsuranceGroup: Tcomb.String,
+    cdQuantityOrdered: Tcomb.maybe(Tcomb.Number),
+    cdCheckAmount: Tcomb.maybe(Tcomb.Number),
+    cdCheckNumber: Tcomb.maybe(Tcomb.String),
+    tshirtSizeC_XS: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeC_SM: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeC_MD: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeC_LG: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeY_XL: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeAdult_SM: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeAdult_MD: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeAdult_LG: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeAdult_XL: Tcomb.maybe(Tcomb.Number),
+    tshirtSizeAdult_XXL: Tcomb.maybe(Tcomb.Number),
+    isNewMemberClass: Tcomb.Boolean,
+    isAcceptTerms: Tcomb.Boolean,
 });
 
 function getRegistrationFormTemplate(locals) {
   return new CustomFormTemplate(locals);
 }
-
-// var Options = {};
 
 var Options = {
   template: getRegistrationFormTemplate,
