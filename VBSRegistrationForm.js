@@ -49,6 +49,12 @@ Age.getValidationErrorMessage = function(value,path,context) {
   return 'Child must be 3 years of age or older';
 };
 
+var DOB = Tcomb.refinement(Tcomb.Date,
+  function(date) {
+    return date.split(' ').slice(0,3);
+  }
+);
+
 var SchoolGrade = Tcomb.refinement(Tcomb.Number,
   function(n) {
       return (n <= 10);
@@ -118,6 +124,11 @@ function getRegistrationFormTemplate(locals) {
   return new CustomFormTemplate(locals);
 }
 
+function trimDate(date) {
+  var dateAsString = date.toString();
+  return dateAsString.split(' ').slice(0,4).toString();
+}
+
 var Options = {
   template: getRegistrationFormTemplate,
   auto: 'placeholders',
@@ -168,6 +179,11 @@ var Options = {
     },
     DOB: {
       mode: "date",
+      config: {
+        //format: value => trimDate(value)
+      },
+      // date: "",
+      // mode: "date",
     },
     schoolGrade: {
       placeholder: "Child's 2016-2017 School Grade*",
