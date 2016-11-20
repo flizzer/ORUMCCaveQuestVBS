@@ -15,5 +15,8 @@
     "react-native-communications": "^1.0.1",
     "react-native-mail": "^0.2.4",
     "tcomb-form-native": "^0.6.1"
+  },
+  "devDependencies": {
+    "eslint-config-rallycoding": "^3.1.0"
   }
 }
