@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component,PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   Text
   , ScrollView
@@ -11,6 +11,7 @@ import {
   , TouchableHighlight
   , View
 } from 'react-native';
+
 const VBSRegistrationForm = require('./VBSRegistrationForm.js');
 
 class WelcomeScreen extends Component {
@@ -21,36 +22,32 @@ class WelcomeScreen extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this._onForward = this._onForward.bind(this);
-    this._onBack = this._onBack.bind(this);
+    this.onForward = this.onForward.bind(this);
+    this.onBack = this.onBack.bind(this);
     // this.title = this.props.title;
   }
 
-  _onForward() {
+  onForward() {
     this.props.navigator.push({
       component: VBSRegistrationForm,
       title: 'VBS Registration Form'
     });
   }
 
-  _onBack() {
-    // this.props.navigator.push({
-    //   component: VBSRegistrationForm
-    // });
+  onBack() {
+
   }
-  // onPress() {
-  //   this.props.navigator.push({
-  //     component: VBSRegistrationForm,
-  //   });
-  // }
+
   render() {
     return (
       <ScrollView
-        style={welcomeScreenStyles.container}>
+        style={welcomeScreenStyles.container}
+      >
           <View style={welcomeScreenStyles.imgContainer}>
             <Image
             source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
-            style={welcomeScreenStyles.logo}/>
+            style={welcomeScreenStyles.logo}
+            />
         </View>
         <Text style={welcomeScreenStyles.welcomeText}>
           Welcome to the ORUMC Cave Quest Registration App!
@@ -73,21 +70,22 @@ class WelcomeScreen extends Component {
           Please complete ONE app submission for EACH child regardless of age.
         </Text>
         <Text style={welcomeScreenStyles.sectionHeader3}>
-          By continuing, you understand your child(ren)'s picture(s) may
+          By continuing, you understand your child(ren)''s picture(s) may
           be placed on the church website.
         </Text>
         <TouchableHighlight
           style={welcomeScreenStyles.button}
-          onPress={this._onForward}
-          underlayColor='#B09337'>
+          onPress={this.onForward}
+          underlayColor='#B09337'
+        >
             <Text style={welcomeScreenStyles.buttonText}>Continue</Text>
         </TouchableHighlight>
       </ScrollView>
-    )
+    );
   }
 }
 
-var welcomeScreenStyles = StyleSheet.create({
+let welcomeScreenStyles = StyleSheet.create({
   button: {
     height: 36,
     backgroundColor: '#5C3B69',
@@ -122,7 +120,7 @@ var welcomeScreenStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sectionHeader1:{
+  sectionHeader1: {
     color: '#000000',
     fontWeight: 'bold',
     fontSize: 15,
@@ -130,31 +128,31 @@ var welcomeScreenStyles = StyleSheet.create({
     textDecorationLine: 'underline',
     textAlign: 'center'
   },
-  welcomeText:{
+  welcomeText: {
     color: '#878B3F',
     fontWeight: 'bold',
     fontSize: 14,
     textAlign: 'center'
   },
-  dateText:{
+  dateText: {
     color: '#FEDC5C',
     fontWeight: 'bold',
     fontSize: 14,
     textAlign: 'center'
   },
-  sectionHeader3:{
+  sectionHeader3: {
     color: '#000000',
     fontWeight: '500',
     fontSize: 10,
     textAlign: 'center'
   },
-  horizontalInputContainer:{
+  horizontalInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  flexText:{
-    flex:1,
+  flexText: {
+    flex: 1,
     padding: 2,
     flexWrap: 'nowrap'
   }

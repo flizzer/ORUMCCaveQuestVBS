@@ -10,7 +10,7 @@
     "lodash": "^4.1.0",
     "nodemailer": "^2.3.0",
     "react": "^15.3.2",
-    "react-native": "^0.36.1",
+    "react-native": "^0.38.0",
     "react-native-cli": "^1.2.0",
     "react-native-communications": "^1.0.1",
     "react-native-mail": "^0.2.4",

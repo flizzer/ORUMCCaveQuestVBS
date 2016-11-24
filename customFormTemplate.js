@@ -4,13 +4,12 @@
 
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableHighlight,
   View,
   Image
 } from 'react-native';
+
 const Tcomb = require('tcomb-form-native');
 
 class CustomFormTemplate extends React.Component {
@@ -20,41 +19,41 @@ class CustomFormTemplate extends React.Component {
   }
 
   getCustomFormTemplate(locals: Tcomb.object) {
-    var customFormStyles = StyleSheet.create({
-      horizontalInputContainer:{
+    const customFormStyles = StyleSheet.create({
+      horizontalInputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
       },
-      flexInput:{
-        flex:1,
+      flexInput: {
+        flex: 1,
         padding: 2,
         flexWrap: 'nowrap'
       },
-      flexInputNoLabelWrap:{
-        flex:2,
+      flexInputNoLabelWrap: {
+        flex: 2,
         padding: 2,
         alignItems: 'center',
         justifyContent: 'center'
       },
-      helpText:{
+      helpText: {
         color: '#878B3F',
         fontSize: 17,
         marginBottom: 2
       },
-      border:{
+      border: {
         borderRadius: 4,
         borderWidth: 2,
         borderColor: '#9E9382',
         marginBottom: 5,
         padding: 7
       },
-      label:{
+      label: {
         color: '#A3938B',
         fontWeight: 'normal',
         fontSize: 17
       },
-      sectionHeader1:{
+      sectionHeader1: {
         color: '#000000',
         fontWeight: 'bold',
         fontSize: 17,
@@ -62,65 +61,65 @@ class CustomFormTemplate extends React.Component {
         textDecorationLine: 'underline',
         textAlign: 'center'
       },
-      sectionHeader2:{
+      sectionHeader2: {
         color: '#000000',
         fontWeight: 'bold',
         fontSize: 14,
         textAlign: 'center'
       },
-      sectionHeader3:{
+      sectionHeader3: {
         color: '#000000',
         fontWeight: '500',
         fontSize: 17,
         padding: 5
       },
-      disclaimerText:{
+      disclaimerText: {
         color: '#000000',
         fontSize: 11,
         textAlign: 'justify',
         padding: 7
       },
-      musicHeader:{
+      musicHeader: {
         color: '#000000',
         fontWeight: 'bold',
         fontSize: 14,
         textAlign: 'center',
         textDecorationLine: 'underline'
       },
-      underlinedText:{
+      underlinedText: {
         textDecorationLine: 'underline'
       },
-      italicizedText:{
+      italicizedText: {
         fontStyle: 'italic'
       },
-      boldText:{
+      boldText: {
         fontWeight: 'bold'
       },
-      musicText:{
+      musicText: {
         color: '#000000',
         fontSize: 11,
         textAlign: 'justify',
         padding: 7
       },
-      tshirtHeader:{
+      tshirtHeader: {
         color: '#000000',
         fontWeight: 'bold',
         fontSize: 14,
         textAlign: 'left'
       },
-      tshirtText:{
+      tshirtText: {
         color: '#000000',
         fontSize: 11,
         textAlign: 'justify',
         padding: 7
       },
-      newMemberflexInputNoLabelWrap:{
-        flex:2,
+      newMemberflexInputNoLabelWrap: {
+        flex: 2,
         padding: 2,
       },
-      newMemberFlexInput:{
+      newMemberFlexInput: {
         alignItems: 'center',
-        flex:1,
+        flex: 1,
         padding: 2,
         flexWrap: 'nowrap'
       },
@@ -169,7 +168,8 @@ class CustomFormTemplate extends React.Component {
         <View style={customFormStyles.imgContainer}>
           <Image
             source={require('./img/cave-quest-vbs-logo-LoRes-RGB.png')}
-            style={customFormStyles.logo}/>
+            style={customFormStyles.logo}
+          />
         </View>
         <View style={customFormStyles.border}>
           <View style={customFormStyles.horizontalInputContainer}>
@@ -199,8 +199,8 @@ class CustomFormTemplate extends React.Component {
             <Text style={customFormStyles.label}>
               Child's Date of Birth:*
             </Text>
-            <View style={customFormStyles.horizontalInputContainer}>
-              <View style={customFormStyles.flexInputNoLabelWrap}>
+            <View>
+              <View>
                 {locals.inputs.DOB}
               </View>
             </View>

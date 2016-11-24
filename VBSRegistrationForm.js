@@ -2,75 +2,74 @@
 
 'use strict';
 
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {
   Text
   , ScrollView
-  , Image
   , StyleSheet
   , TouchableHighlight
-  , View
 } from 'react-native';
 
 const Tcomb = require('tcomb-form-native');
-const Component = Tcomb.form.Component;
+const CustomFormTemplate = require('./customFormTemplate');
+const PersistentStorage = require('./persistentStorage');
+const SubmissionCompleteScreen = require('./submissionCompleteScreen');
+const Mailer = require('./mailer');
+
+const persistentStorage = new PersistentStorage();
+const mailer = new Mailer();
+
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.backgroundColor = '#9E9382';
 Tcomb.form.Form.stylesheet.textbox.notEditable.borderColor = '#9E9382';
 
-const CustomFormTemplate = require('./customFormTemplate.js');
-const PersistentStorage = require('./persistentStorage.js');
-var persistentStorage = new PersistentStorage();
-const SubmissionCompleteScreen = require('./submissionCompleteScreen.js');
-const Mailer = require('./mailer.js');
-var mailer = new Mailer();
-
-var Form = Tcomb.form.Form;
-var Gender = Tcomb.enums({
+const Form = Tcomb.form.Form;
+const Gender = Tcomb.enums({
 		M: 'Male',
 		F: 'Female'
 });
 
-var ZipCode = Tcomb.refinement(Tcomb.Number,
-  function(n) {
-    return (n > 0 && n.toString().length == 5);
+const ZipCode = Tcomb.refinement(Tcomb.Number,
+  function (n) {
+    return (n > 0 && n.toString().length === 5);
   }
 );
-ZipCode.getValidationErrorMessage = function(value,path,context) {
+ZipCode.getValidationErrorMessage = function () {
 	return 'A zip code is required';
 };
 
-var Age = Tcomb.refinement(Tcomb.Number,
-  function(n) {
+const Age = Tcomb.refinement(Tcomb.Number,
+  function (n) {
     return (n >= 3);
   }
 );
-Age.getValidationErrorMessage = function(value,path,context) {
+Age.getValidationErrorMessage = function () {
   return 'Child must be 3 years of age or older';
 };
 
-var DOB = Tcomb.refinement(Tcomb.Date,
-  function(date) {
-    return date.split(' ').slice(0,3);
-  }
-);
+// const DOB = Tcomb.refinement(Tcomb.Date,
+//   function (date) {
+//     return date.split(' ').slice(0, 3);
+//   }
+// );
 
-var SchoolGrade = Tcomb.refinement(Tcomb.Number,
-  function(n) {
+const SchoolGrade = Tcomb.refinement(Tcomb.Number,
+  function (n) {
       return (n <= 10);
   }
 );
-SchoolGrade.getValidationErrorMessage = function(value,path,context) {
-    return "Child's grade for 2016-2017 school year must be 10th or less"
+
+SchoolGrade.getValidationErrorMessage = function () {
+    return "Child's grade for 2016-2017 school year must be 10th or less";
 };
 
-var VolunteerAgeGroup = Tcomb.maybe(Tcomb.enums({
+const VolunteerAgeGroup = Tcomb.maybe(Tcomb.enums({
     E: 'Elementary',
     P: 'Preschool',
     O: 'Other'
 }));
 
-var Child = Tcomb.struct({
+const Child = Tcomb.struct({
     firstName: Tcomb.String,
     lastName: Tcomb.String,
     gender: Gender,
@@ -125,11 +124,13 @@ function getRegistrationFormTemplate(locals) {
 }
 
 function trimDate(date) {
-  var dateAsString = date.toString();
-  return dateAsString.split(' ').slice(0,4).toString();
+  const dateAsString = date.toString();
+  //return null;
+   const dateWithCommas = dateAsString.split(' ').slice(0, 4).toString();
+   return dateWithCommas.replace(/,/g, ' ');
 }
 
-var Options = {
+const Options = {
   template: getRegistrationFormTemplate,
   auto: 'placeholders',
   fields: {
@@ -144,33 +145,33 @@ var Options = {
     gender: {
       error: "Child's gender is required",
       order: 'asc',
-      nullOption: {value: '', text: "Child's Gender*"}
+      nullOption: { value: '', text: "Child's Gender*" }
     },
     streetAddress: {
-      error: "Street address is required",
-      placeholder: "Street Address*",
+      error: 'Street address is required',
+      placeholder: 'Street Address*',
     },
     city: {
-      error: "City is required",
-      placeholder: "City*",
+      error: 'City is required',
+      placeholder: 'City*',
     },
     state: {
-      error: "State is required*",
-      placeholder: "State*",
+      error: 'State is required*',
+      placeholder: 'State*',
     },
     zipCode: {
-      placeholder: "Zip code*",
+      placeholder: 'Zip code*',
     },
     homePhoneNumber: {
-      error: "A home phone number is required",
-      placeholder: "Home Phone Number*",
+      error: 'A home phone number is required',
+      placeholder: 'Home Phone Number*'
     },
     cellPhoneNumber: {
-      placeholder: "Cell Phone Number",
+      placeholder: 'Cell Phone Number',
     },
     emailAddress: {
-      error: "An email address is required",
-      placeholder: "Email Address*",
+      error: 'An email address is required',
+      placeholder: 'Email Address*',
       autoCapitalize: false
     },
     age: {
@@ -178,10 +179,10 @@ var Options = {
       placeholder: "Child's Age*",
     },
     DOB: {
-      mode: "date",
-      config: {
-        //format: value => trimDate(value)
-      },
+      mode: 'date',
+      // config: {
+      //   format: value => trimDate(value)
+      // },
       // date: "",
       // mode: "date",
     },
@@ -201,41 +202,41 @@ var Options = {
       placeholder: "Child's Father's Name",
     },
     otherGuardianName: {
-      placeholder: "Guardian Name",
+      placeholder: 'Guardian Name',
     },
     otherGuardianRelationship: {
-      placeholder: "Guardian Relationship",
+      placeholder: 'Guardian Relationship',
     },
     otherGuardianPhoneNumber: {
-      placeholder: "Guardian Phone Number",
+      placeholder: 'Guardian Phone Number',
     },
     emergencyName: {
-      error: "Emergency contact name is required.",
-      placeholder: "Emergency Contact Name*",
+      error: 'Emergency contact name is required.',
+      placeholder: 'Emergency Contact Name*'
     },
     emergencyPhoneNumber: {
-      error: "Emergency contact phone number is required.",
-      placeholder: "Emergency Contact Number*",
+      error: 'Emergency contact phone number is required.',
+      placeholder: 'Emergency Contact Number*',
     },
-    allergies:{
-      placeholder: "Allergies or other medical conditions",
+    allergies: {
+      placeholder: 'Allergies or other medical conditions',
     },
-    homeChurch:{
-      placeholder: "Home Church",
+    homeChurch: {
+      placeholder: 'Home Church',
     },
     friendRequest: {
-      placeholder: "Friend requested to be placed with",
+      placeholder: 'Friend requested to be placed with',
     },
     isVolunteer: {
-      label: " ",
+      label: ' ',
       onTintColor: '#5C3B69'
     },
     volunteerAgeGroup: {
       order: 'asc',
-      nullOption: { value: '', text: "Volunteer Age Group" }
+      nullOption: { value: '', text: 'Volunteer Age Group' }
     },
     isNurseryRequested: {
-      label: " ",
+      label: ' ',
       onTintColor: '#5C3B69'
     },
     volunteerChildName: {
@@ -257,57 +258,57 @@ var Options = {
       placeholder: "Parent's Insurance Group*",
     },
     cdQuantityOrdered: {
-      placeholder: "# of CDs",
+      placeholder: '# of CDs',
     },
     cdCheckAmount: {
-      placeholder: "Cost",
+      placeholder: 'Cost',
       editable: false
     },
     cdCheckNumber: {
-      placeholder: "Check #",
+      placeholder: 'Check #',
     },
     tshirtSizeC_XS: {
-      placeholder: "C/XS (2-4)",
+      placeholder: 'C/XS (2-4)',
     },
     tshirtSizeC_SM: {
-      placeholder: "C/SM (6-8)",
+      placeholder: 'C/SM (6-8)',
     },
     tshirtSizeC_MD: {
-      placeholder: "C/MD (10-12)",
+      placeholder: 'C/MD (10-12)',
     },
     tshirtSizeC_LG: {
-      placeholder: "C/LG (14-16)",
+      placeholder: 'C/LG (14-16)',
     },
     tshirtSizeY_XL: {
-      placeholder: "Y/XL (18-20)",
+      placeholder: 'Y/XL (18-20'
     },
     tshirtSizeAdult_SM: {
-      placeholder: "Adult SM",
+      placeholder: 'Adult SM',
     },
     tshirtSizeAdult_MD: {
-      placeholder: "Adult MD",
+      placeholder: 'Adult MD',
     },
     tshirtSizeAdult_LG: {
-      placeholder: "Adult LG",
+      placeholder: 'Adult LG',
     },
     tshirtSizeAdult_XL: {
-      placeholder: "Adult XL",
+      placeholder: 'Adult XL',
     },
     tshirtSizeAdult_XXL: {
-      placeholder: "Adult XXL",
+      placeholder: 'Adult XXL',
     },
     isNewMemberClass: {
-      label: " ",
+      label: ' ',
       onTintColor: '#5C3B69'
     },
     isAcceptTerms: {
-      label: " ",
+      label: ' ',
       onTintColor: '#5C3B69'
     }
   }
 };
 
-var VBSRegistrationForm = React.createClass ({
+const VBSRegistrationForm = React.createClass({
 
     // static propTypes = {
     //   title: PropTypes.string.isRequired,
@@ -320,11 +321,11 @@ var VBSRegistrationForm = React.createClass ({
     //   // this._onBack = this._onBack.bind(this);
     // }
 
-    _onPress: function() {
-      var child = this.refs.form.getValue();
+    onPress() {
+      const child = this.refs.form.getValue();
       console.log(child);
       if (child != null) {
-        var childUniqueId = persistentStorage.saveChild(child);
+        const childUniqueId = persistentStorage.saveChild(child);
         mailer.sendMail(child, childUniqueId);
         this.props.navigator.push({
           component: SubmissionCompleteScreen,
@@ -341,18 +342,19 @@ var VBSRegistrationForm = React.createClass ({
     //   // });
     // }
 
-  render: function() {
+    render() {
       return (
         <ScrollView contentContainerStyle={VBSRegistrationFormStyles.container}>
           <Form
             ref="form"
             type={Child}
             options={Options}
-            />
+          />
           <TouchableHighlight
             style={VBSRegistrationFormStyles.button}
-            onPress={this._onPress}
-            underlayColor='#B09337'>
+            onPress={this.onPress}
+            underlayColor='#B09337'
+          >
             <Text style={VBSRegistrationFormStyles.buttonText}>Register</Text>
           </TouchableHighlight>
         </ScrollView>
@@ -414,7 +416,7 @@ var VBSRegistrationForm = React.createClass ({
 //   }
 // }
 
-var VBSRegistrationFormStyles = StyleSheet.create({
+let VBSRegistrationFormStyles = StyleSheet.create({
   button: {
     height: 36,
     backgroundColor: '#5C3B69',
