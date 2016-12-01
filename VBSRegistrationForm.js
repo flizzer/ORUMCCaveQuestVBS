@@ -12,11 +12,11 @@ import {
 
 const Tcomb = require('tcomb-form-native');
 const CustomFormTemplate = require('./customFormTemplate');
-const PersistentStorage = require('./persistentStorage');
+const FirebaseStorage = require('./firebaseStorage');
 const SubmissionCompleteScreen = require('./submissionCompleteScreen');
 const Mailer = require('./mailer');
 
-const persistentStorage = new PersistentStorage();
+const firebaseStorage = new FirebaseStorage();
 const mailer = new Mailer();
 
 Tcomb.form.Form.stylesheet.textbox.normal.borderColor = '#9E9382';
@@ -123,12 +123,12 @@ function getRegistrationFormTemplate(locals) {
   return new CustomFormTemplate(locals);
 }
 
-function trimDate(date) {
-  const dateAsString = date.toString();
-  //return null;
-   const dateWithCommas = dateAsString.split(' ').slice(0, 4).toString();
-   return dateWithCommas.replace(/,/g, ' ');
-}
+// function trimDate(date) {
+//   const dateAsString = date.toString();
+//   //return null;
+//    const dateWithCommas = dateAsString.split(' ').slice(0, 4).toString();
+//    return dateWithCommas.replace(/,/g, ' ');
+// }
 
 const Options = {
   template: getRegistrationFormTemplate,
@@ -181,7 +181,7 @@ const Options = {
     DOB: {
       mode: 'date',
       // config: {
-      //   format: value => trimDate(value)
+      //   isCollapsed: true
       // },
       // date: "",
       // mode: "date",
@@ -325,8 +325,8 @@ const VBSRegistrationForm = React.createClass({
       const child = this.refs.form.getValue();
       console.log(child);
       if (child != null) {
-        const childUniqueId = persistentStorage.saveChild(child);
-        mailer.sendMail(child, childUniqueId);
+        const childUniqueId = firebaseStorage.saveChild(child);
+        // mailer.sendMail(child, childUniqueId);
         this.props.navigator.push({
           component: SubmissionCompleteScreen,
           passProps: {

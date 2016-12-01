@@ -5,9 +5,10 @@
 const React = require('react');
 const Tcomb = require('tcomb-form-native');
 const Firebase = require('firebase');
+
 const FirebaseURL = 'https://popping-torch-8932.firebaseio.com/';
 
-class PersistentStorage extends React.Component {
+class FirebaseStorage extends React.Component {
 
   constructor(props: React.PropTypes) {
     super(props);
@@ -19,8 +20,8 @@ class PersistentStorage extends React.Component {
   }
 
   saveChild(child : Tcomb.struct) {
-    var timeSubmitted = Firebase.ServerValue.TIMESTAMP;
-    var newChildReference = this.databaseItems.push({
+    const timeSubmitted = Firebase.ServerValue.TIMESTAMP;
+    const newChildReference = this.databaseItems.push({
       firstName: child.firstName,
       lastName: child.lastName,
       gender: child.gender,
@@ -73,4 +74,4 @@ class PersistentStorage extends React.Component {
   }
 }
 
-module.exports = PersistentStorage;
+module.exports = FirebaseStorage;
